@@ -15,7 +15,6 @@ const GlobalStyles = createGlobalStyle`
   #__next { 
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100%;
   }
   `;
