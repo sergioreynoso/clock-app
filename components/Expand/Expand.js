@@ -11,7 +11,8 @@ const Wrapper = styled.div`
   bottom: 0;
   width: 100%;
   height: 50%;
-  background-color: hsl(${COLORS.white} / 0.5);
+  color: hsl(var(--color-text));
+  background-color: hsl(var(--color-bg) / 0.5);
   transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
   transition: transform 0.5s ease-in-out;
 `;

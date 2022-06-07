@@ -8,13 +8,13 @@ import {
   WEIGHTS,
 } from "../../utils/constants";
 
-function Clock({ isExpand, setIsExpand }) {
+function Clock({ isExpand, setIsExpand, theme }) {
   const onClickHandler = () => {
     setIsExpand(expand => (expand ? false : true));
   };
   return (
     <Wrapper isExpand={isExpand}>
-      <Title>11:37</Title>
+      <Title>11:37:{theme}</Title>
       <Button onClick={onClickHandler}>Expand</Button>
     </Wrapper>
   );

@@ -1,22 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import BackgroundImage from "../components/BackgroundImage/BackgroundImage";
+import { useTheme } from "next-themes";
+import BackgroundImage from "../components/BackgroundImage";
 import Clock from "../components/Clock/Clock";
 import Expand from "../components/Expand/Expand";
-import {
-  COLORS,
-  FONT_SIZE,
-  LINE_HEIGHT,
-  QUERIES,
-  WEIGHTS,
-} from "../utils/constants";
+import { QUERIES } from "../utils/constants";
 
 export default function Home() {
   const [isExpand, setIsExpand] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  // Delays rendering until UI has been mounted on the client to prevents hydration errors
+  useEffect(() => {
+    setMounted(true);
+    setTheme("dark");
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Wrapper>
-      <Clock isExpand={isExpand} setIsExpand={setIsExpand} />
+      <Clock isExpand={isExpand} setIsExpand={setIsExpand} theme={theme} />
       <Expand isExpand={isExpand} />
       <BackgroundImage />
     </Wrapper>

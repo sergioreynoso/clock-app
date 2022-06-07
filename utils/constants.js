@@ -37,6 +37,6 @@ export const LINE_HEIGHT = {
 };
 
 export const BACKGROUND_IMAGES = {
-  day: "/images/background_day.jpg",
-  night: "/images/background_night.jpg",
+  light: "/images/background_day.jpg",
+  dark: "/images/background_night.jpg",
 };

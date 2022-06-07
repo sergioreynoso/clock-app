@@ -1,14 +1,17 @@
 import { css } from "styled-components";
+import { COLORS } from "../../utils/constants";
 
 const StyledTheme = css`
   /* ------- Light-Mode Color Variables ------- */
   html {
-    --color-text: #000000;
+    --color-text: ${COLORS.black};
+    --color-bg: ${COLORS.white};
   }
 
   /* ------- Dark-Mode Color Variables ------- */
   [data-theme="dark"] {
-    --color-text: #ffffff;
+    --color-text: ${COLORS.white};
+    --color-bg: ${COLORS.black};
   }
 `;
 
