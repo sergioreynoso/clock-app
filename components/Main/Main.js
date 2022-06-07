@@ -40,9 +40,6 @@ const Wrapper = styled.main`
   padding-block-start: 32px;
   padding-block-end: 40px;
 
-  transform: translateY(${({ isExpand }) => (isExpand ? "-50%" : "0")});
-  transition: transform ${ANIMATION_TIME.medium} ease-in-out;
-
   @media ${QUERIES.tabletAndUp} {
     padding-inline: 64px;
     padding-block-start: 80px;

@@ -7,7 +7,9 @@ export default function ExpandButton({ onClick, isExpand }) {
   return (
     <Button onClick={onClick}>
       <Label>{isExpand ? "Less" : "More"}</Label>
-      <Icon isExpand={isExpand} />
+      {/* $ on the prop make it a transient prop. 
+      It wont get passed down to the child component */}
+      <Icon $isExpand={isExpand} />
     </Button>
   );
 }
