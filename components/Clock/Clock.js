@@ -8,7 +8,9 @@ export default function Clock() {
   return (
     <Wrapper>
       <GreetingWrapper>
-        <SunIcon />
+        <IconWrapper>
+          <SunIcon />
+        </IconWrapper>
         <Greeting>{`Good Morning, It's currently`}</Greeting>
       </GreetingWrapper>
       <TimeWrapper>
@@ -30,6 +32,10 @@ const Wrapper = styled.div`
   @media ${QUERIES.laptopAndUp} {
     gap: 16px;
   }
+`;
+
+const IconWrapper = styled.div`
+  flex-shrink: 0;
 `;
 
 const GreetingWrapper = styled.div`
