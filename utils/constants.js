@@ -35,3 +35,8 @@ export const LINE_HEIGHT = {
   medium: "4.25rem",
   large: "12.5rem",
 };
+
+export const BACKGROUND_IMAGES = {
+  day: "/images/background_day.jpg",
+  night: "/images/background_night.jpg",
+};
