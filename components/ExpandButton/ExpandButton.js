@@ -49,7 +49,7 @@ const Label = styled.span`
 const Icon = styled(IconArrowUp)`
   width: 32px;
   height: 32px;
-  transform: rotate(${({ isExpand }) => (isExpand ? "180deg" : "0deg")});
+  transform: rotate(${({ $isExpand }) => ($isExpand ? "180deg" : "0deg")});
   transition: transform ${ANIMATION_TIME.medium} ease-in-out;
 
   @media ${QUERIES.laptopAndUp} {
