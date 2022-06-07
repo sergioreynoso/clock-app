@@ -68,6 +68,7 @@ const MainWrapper = styled.div`
   );
   transition: transform ${ANIMATION_TIME.medium} ease-in-out,
     padding-block-end ${ANIMATION_TIME.medium} ease-in-out;
+  will-change: transform;
 
   @media ${QUERIES.tabletAndUp} {
     padding-inline: 64px;
@@ -91,4 +92,5 @@ const ExpandWrapper = styled.div`
   height: var(--expand-height);
   transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
   transition: transform ${ANIMATION_TIME.medium} ease-in-out;
+  will-change: transform;
 `;

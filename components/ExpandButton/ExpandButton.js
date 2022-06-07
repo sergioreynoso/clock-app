@@ -20,7 +20,7 @@ const Button = styled.button`
   align-items: center;
   width: 115px;
   height: 40px;
-  padding-inline-start: 20px;
+  padding-inline-start: 10px;
   padding-inline-end: 4px;
   background-color: hsl(${COLORS.white});
   border-radius: 5000px;
