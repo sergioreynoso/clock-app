@@ -7,7 +7,7 @@ export default function ExpandButton({ onClick, isExpand }) {
   return (
     <Button onClick={onClick}>
       <Label>{isExpand ? "Less" : "More"}</Label>
-      {/* $ on the prop make it a transient prop. 
+      {/* The '$' sign on the prop name makes it a transient prop. 
       It wont get passed down to the child component */}
       <Icon $isExpand={isExpand} />
     </Button>
@@ -20,7 +20,7 @@ const Button = styled.button`
   align-items: center;
   width: 115px;
   height: 40px;
-  padding-inline-start: 10px;
+  padding-inline-start: 16px;
   padding-inline-end: 4px;
   background-color: hsl(${COLORS.white});
   border-radius: 5000px;
@@ -28,7 +28,7 @@ const Button = styled.button`
   @media ${QUERIES.laptopAndUp} {
     width: 146px;
     height: 56px;
-    padding-inline-start: 28px;
+    padding-inline-start: 24px;
     padding-inline-end: 8px;
   }
 `;
