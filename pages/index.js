@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import BackgroundImage from "../components/BackgroundImage";
-import Clock from "../components/Clock/Clock";
-import Expand from "../components/Expand/Expand";
+import Main from "../components/Main";
+import Expand from "../components/Expand";
 import { QUERIES } from "../utils/constants";
 
 export default function Home() {
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <Clock isExpand={isExpand} setIsExpand={setIsExpand} />
+      <Main isExpand={isExpand} setIsExpand={setIsExpand} />
       <Expand isExpand={isExpand} />
       <BackgroundImage />
     </Wrapper>

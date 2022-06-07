@@ -22,8 +22,9 @@ export const FONT_SIZE = {
   regular: "18px",
   medium: "20px",
   large: "28px",
-  xlarge: "56px",
-  xxlarge: "200px",
+  xlarge: "40px",
+  xxlarge: "56px",
+  xxxlarge: "200px",
 };
 
 export const WEIGHTS = {

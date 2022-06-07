@@ -1,12 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  ANIMATION_TIME,
-  COLORS,
-  FONT_SIZE,
-  QUERIES,
-  WEIGHTS,
-} from "../../utils/constants";
+import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
 
 export default function ExpandButton({ onClick, isExpand }) {
@@ -38,15 +32,15 @@ const Button = styled.button`
 `;
 
 const Label = styled.span`
-  font-size: ${FONT_SIZE.xsmall};
-  font-weight: ${WEIGHTS.bold};
-  letter-spacing: 3.75px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2344rem;
   text-transform: uppercase;
   color: hsl(${COLORS.grey} / 0.5);
 
   @media ${QUERIES.laptopAndUp} {
-    font-size: ${FONT_SIZE.small};
-    letter-spacing: 5px;
+    font-size: 1rem;
+    letter-spacing: 0.3125rem;
   }
 `;
 
