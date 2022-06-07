@@ -17,6 +17,7 @@ export const COLORS = {
 };
 
 export const FONT_SIZE = {
+  xsmall: "12px",
   small: "15px",
   regular: "18px",
   medium: "20px",
@@ -39,4 +40,10 @@ export const LINE_HEIGHT = {
 export const BACKGROUND_IMAGES = {
   light: "/images/background_day.jpg",
   dark: "/images/background_night.jpg",
+};
+
+export const ANIMATION_TIME = {
+  slow: ".8s",
+  medium: ".5s",
+  fast: ".2s",
 };

@@ -14,8 +14,8 @@ export default function Home() {
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
     setMounted(true);
-    setTheme("dark");
-  }, []);
+    setTheme("light");
+  }, [setTheme]);
 
   if (!mounted) {
     return null;
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <Wrapper>
-      <Clock isExpand={isExpand} setIsExpand={setIsExpand} theme={theme} />
+      <Clock isExpand={isExpand} setIsExpand={setIsExpand} />
       <Expand isExpand={isExpand} />
       <BackgroundImage />
     </Wrapper>

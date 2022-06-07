@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { COLORS } from "../../utils/constants";
+import { ANIMATION_TIME } from "../../utils/constants";
 
 function Expand({ isExpand }) {
   return <Wrapper isExpand={isExpand}>Expand</Wrapper>;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   color: hsl(var(--color-text));
   background-color: hsl(var(--color-bg) / 0.5);
   transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
-  transition: transform 0.5s ease-in-out;
+  transition: transform ${ANIMATION_TIME.medium} ease-in-out;
 `;
 
 export default Expand;
