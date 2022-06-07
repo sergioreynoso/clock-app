@@ -57,11 +57,29 @@ const Wrapper = styled.div`
 const MainWrapper = styled.div`
   width: 100%;
   height: 100%;
+
+  padding-inline: 26px;
+  padding-block-start: 32px;
+  padding-block-end: 40px;
+
   /* Determines how much component will translate based on Expand height component */
   transform: translateY(
     calc(var(--expand-height) * ${({ isExpand }) => (isExpand ? "-1" : "0")})
   );
-  transition: transform ${ANIMATION_TIME.medium} ease-in-out;
+  transition: transform ${ANIMATION_TIME.medium} ease-in-out,
+    padding-block-end ${ANIMATION_TIME.medium} ease-in-out;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-inline: 64px;
+    padding-block-start: 80px;
+    padding-block-end: 64px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-inline: 165px;
+    padding-block-start: 56px;
+    padding-block-end: ${({ isExpand }) => (isExpand ? "56px" : "98px")};
+  }
 `;
 
 const ExpandWrapper = styled.div`

@@ -36,26 +36,12 @@ const Wrapper = styled.main`
   width: 100%;
   height: 100%;
 
-  padding-inline: 26px;
-  padding-block-start: 32px;
-  padding-block-end: 40px;
-
-  @media ${QUERIES.tabletAndUp} {
-    padding-inline: 64px;
-    padding-block-start: 80px;
-    padding-block-end: 64px;
-  }
-
   @media ${QUERIES.laptopAndUp} {
     grid-template-areas:
       "quote quote"
       "clock button";
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
-
-    padding-inline: 165px;
-    padding-block-start: 56px;
-    padding-block-end: 98px;
   }
 `;
 
