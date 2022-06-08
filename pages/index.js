@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext } from "react";
-import "@fontsource/inter";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/700.css";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import BackgroundImage from "../components/BackgroundImage";
