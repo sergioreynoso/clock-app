@@ -1,18 +1,38 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import Icon from "../../public/images/icon-refresh.svg";
+import { getRandomQuote } from "../../utils/api";
 import { COLORS, QUERIES } from "../../utils/constants";
 import { MainContext } from "../../utils/context";
 
 export default function Quotes() {
-  const { quote } = useContext(MainContext);
+  const [quote, setQuote] = useState(useContext(MainContext).quote);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const upDate = async () => {
+    setIsLoading(true);
+    const quote = await getRandomQuote();
+    setQuote(quote);
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return (
+      <Wrapper>
+        <QuoteWrapper>
+          <Author>Loading Quote...</Author>
+        </QuoteWrapper>
+      </Wrapper>
+    );
+  }
+
   return (
     <Wrapper>
       <QuoteWrapper>
         <Quote>{quote.en}</Quote>
         <Author>{quote.author}</Author>
       </QuoteWrapper>
-      <Button>
+      <Button onClick={upDate}>
         <RefreshIcon />
       </Button>
     </Wrapper>
