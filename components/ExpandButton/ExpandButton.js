@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
+import { MainContext } from "../../utils/context";
 
-export default function ExpandButton({ onClick, isExpand }) {
+export default function ExpandButton() {
+  const { isExpand, setIsExpand } = useContext(MainContext);
+
+  const onClickHandler = () => {
+    setIsExpand(expand => (expand ? false : true));
+  };
+
   return (
-    <Button onClick={onClick}>
+    <Button onClick={onClickHandler}>
       <Label>{isExpand ? "Less" : "More"}</Label>
       {/* The '$' sign on the prop name makes it a transient prop. 
       It wont get passed down to the child component */}

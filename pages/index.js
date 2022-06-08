@@ -7,6 +7,7 @@ import Expand from "../components/Expand";
 import { ANIMATION_TIME, QUERIES } from "../utils/constants";
 import { getLocation, getRandomQuote, getTimeZone } from "../utils/api";
 import { MainContext } from "../utils/context";
+import { getCurrentTime } from "../utils/helpers";
 
 export const getServerSideProps = async () => {
   const location = await getLocation();
@@ -18,14 +19,22 @@ export const getServerSideProps = async () => {
 };
 
 export default function Home({ location, timezone, quote }) {
+  const [time, setTime] = useState(getCurrentTime());
   const [isExpand, setIsExpand] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  useEffect(() => {
+    const timeInt = setInterval(() => {
+      setTime(getCurrentTime());
+    }, 60000);
+    return () => clearInterval(timeInt);
+  }, []);
+
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
     setMounted(true);
-    setTheme("light");
+    // setTheme("light");
   }, [setTheme]);
 
   if (!mounted) {
@@ -35,8 +44,10 @@ export default function Home({ location, timezone, quote }) {
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <MainContext.Provider value={{ location, timezone, quote }}>
-          <Main isExpand={isExpand} setIsExpand={setIsExpand} />
+        <MainContext.Provider
+          value={{ isExpand, setIsExpand, time, location, timezone, quote }}
+        >
+          <Main />
         </MainContext.Provider>
       </MainWrapper>
       <ExpandWrapper isExpand={isExpand}>

@@ -6,11 +6,8 @@ import ExpandButton from "../ExpandButton";
 import Quotes from "../Quotes";
 
 function Main({ isExpand, setIsExpand }) {
-  const onClickHandler = () => {
-    setIsExpand(expand => (expand ? false : true));
-  };
   return (
-    <Wrapper isExpand={isExpand}>
+    <Wrapper>
       <QuotesWrapper>
         <Quotes />
       </QuotesWrapper>
@@ -18,7 +15,7 @@ function Main({ isExpand, setIsExpand }) {
         <Clock />
       </ClockWrapper>
       <ButtonWrapper>
-        <ExpandButton onClick={onClickHandler} isExpand={isExpand} />
+        <ExpandButton />
       </ButtonWrapper>
     </Wrapper>
   );
