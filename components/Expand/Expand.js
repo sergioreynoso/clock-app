@@ -70,6 +70,7 @@ const ListItem = styled.li`
   list-style: none;
   @media ${QUERIES.tabletAndUp} {
     flex-direction: column;
+    justify-content: flex-start;
     gap: 8px;
   }
 
