@@ -46,7 +46,7 @@ const BgImageWrapper = styled.div`
 `;
 
 const BgImage = styled(Image)`
-  opacity: 0.2;
+  opacity: 0.4;
 `;
 
 export default BackgroundImage;

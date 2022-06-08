@@ -14,7 +14,7 @@ export default function Home() {
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
     setMounted(true);
-    setTheme("light");
+    setTheme("dark");
   }, [setTheme]);
 
   if (!mounted) {

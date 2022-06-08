@@ -1,17 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { useTheme } from "next-themes";
+
 import SunIcon from "../../public/images/icon-sun.svg";
 import MoonIcon from "../../public/images/icon-moon.svg";
 import { COLORS, QUERIES } from "../../utils/constants";
 
 export default function Clock() {
+  const { resolvedTheme } = useTheme();
+
   return (
     <Wrapper>
       <GreetingWrapper>
         <IconWrapper>
-          <SunIcon />
+          {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
         </IconWrapper>
-        <Greeting>{`Good Morning, It's currently`}</Greeting>
+        <Greeting>{`${
+          resolvedTheme === "light" ? "Good Morning" : "Good Evening"
+        }, It's currently`}</Greeting>
       </GreetingWrapper>
       <TimeWrapper>
         <Time>{`11:37`}</Time>
