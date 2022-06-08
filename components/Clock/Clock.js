@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import SunIcon from "../../public/images/icon-sun.svg";
 import MoonIcon from "../../public/images/icon-moon.svg";
 import { COLORS, QUERIES } from "../../utils/constants";
+import { MainContext } from "../../utils/context";
+import { getTimeOfDayGreeting } from "../../utils/helpers";
 
 export default function Clock() {
   const { resolvedTheme } = useTheme();
+  const { time, location, timezone } = useContext(MainContext);
 
   return (
     <Wrapper>
@@ -14,15 +17,13 @@ export default function Clock() {
         <IconWrapper>
           {resolvedTheme === "light" ? <SunIcon /> : <MoonIcon />}
         </IconWrapper>
-        <Greeting>{`${
-          resolvedTheme === "light" ? "Good Morning" : "Good Evening"
-        }, It's currently`}</Greeting>
+        <Greeting>{`Good ${getTimeOfDayGreeting()}, It's currently`}</Greeting>
       </GreetingWrapper>
       <TimeWrapper>
-        <Time>{resolvedTheme === "light" ? "11:37" : "23:14"}</Time>
-        <TimeZone>{`bst`}</TimeZone>
+        <Time>{time}</Time>
+        <TimeZone>{timezone.abbreviation}</TimeZone>
       </TimeWrapper>
-      <Location>{`In London, UK`}</Location>
+      <Location>{`${location.region_name}, ${location.region_code}`}</Location>
     </Wrapper>
   );
 }
