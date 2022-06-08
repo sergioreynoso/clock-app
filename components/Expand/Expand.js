@@ -18,7 +18,7 @@ export default function Expand({ data }) {
         <VerticalLine />
         <ListItem3>
           <Heading>Day of the week</Heading>
-          <SugHeading>{day_of_week}</SugHeading>
+          <SugHeading>{day_of_week + 1}</SugHeading>
         </ListItem3>
         <ListItem4>
           <Heading>Week number</Heading>
