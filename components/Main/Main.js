@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ANIMATION_TIME, QUERIES } from "../../utils/constants";
+import { QUERIES } from "../../utils/constants";
 import Clock from "../Clock";
 import ExpandButton from "../ExpandButton";
 import Quotes from "../Quotes";

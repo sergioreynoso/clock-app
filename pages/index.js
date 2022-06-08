@@ -5,8 +5,18 @@ import BackgroundImage from "../components/BackgroundImage";
 import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, QUERIES } from "../utils/constants";
+import { getLocation, getRandomQuote, getTimeZone } from "../utils/api";
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const location = await getLocation();
+  const timezone = await getTimeZone();
+  const quote = await getRandomQuote();
+  return {
+    props: { location, timezone, quote },
+  };
+};
+
+export default function Home({ location, timezone, quote }) {
   const [isExpand, setIsExpand] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -21,13 +31,19 @@ export default function Home() {
     return null;
   }
 
+  // console.log(locationData, timezone, quote);
+
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <Main isExpand={isExpand} setIsExpand={setIsExpand} />
+        <Main
+          isExpand={isExpand}
+          setIsExpand={setIsExpand}
+          data={{ location, timezone }}
+        />
       </MainWrapper>
       <ExpandWrapper isExpand={isExpand}>
-        <Expand />
+        <Expand data={timezone} />
       </ExpandWrapper>
       <BackgroundImage />
     </Wrapper>

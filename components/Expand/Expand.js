@@ -2,26 +2,27 @@ import React from "react";
 import styled from "styled-components";
 import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 
-export default function Expand() {
+export default function Expand({ data }) {
+  const { timezone, day_of_week, day_of_year, week_number } = data;
   return (
     <Wrapper>
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
-          <SugHeading>Europe/London</SugHeading>
+          <SugHeading>{timezone.replace("_", " ")}</SugHeading>
         </ListItem1>
         <ListItem2>
           <Heading>Day of the year</Heading>
-          <SugHeading>295</SugHeading>
+          <SugHeading>{day_of_year}</SugHeading>
         </ListItem2>
         <VerticalLine />
         <ListItem3>
           <Heading>Day of the week</Heading>
-          <SugHeading>5</SugHeading>
+          <SugHeading>{day_of_week}</SugHeading>
         </ListItem3>
         <ListItem4>
           <Heading>Week number</Heading>
-          <SugHeading>42</SugHeading>
+          <SugHeading>{week_number}</SugHeading>
         </ListItem4>
       </ListWrapper>
     </Wrapper>
