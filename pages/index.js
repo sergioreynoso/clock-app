@@ -9,7 +9,7 @@ import { getLocation, getRandomQuote, getTimeZone } from "../utils/api";
 import { MainContext } from "../utils/context";
 import { getCurrentTime } from "../utils/helpers";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const location = await getLocation();
   const timezone = await getTimeZone();
   const quote = await getRandomQuote();
