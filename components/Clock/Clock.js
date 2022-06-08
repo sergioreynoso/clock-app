@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
-
 import SunIcon from "../../public/images/icon-sun.svg";
 import MoonIcon from "../../public/images/icon-moon.svg";
 import { COLORS, QUERIES } from "../../utils/constants";
@@ -20,7 +19,7 @@ export default function Clock() {
         }, It's currently`}</Greeting>
       </GreetingWrapper>
       <TimeWrapper>
-        <Time>{`11:37`}</Time>
+        <Time>{resolvedTheme === "light" ? "11:37" : "23:14"}</Time>
         <TimeZone>{`bst`}</TimeZone>
       </TimeWrapper>
       <Location>{`In London, UK`}</Location>

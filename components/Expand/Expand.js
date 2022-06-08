@@ -1,16 +1,140 @@
 import React from "react";
 import styled from "styled-components";
-import { ANIMATION_TIME } from "../../utils/constants";
+import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 
-function Expand() {
-  return <Wrapper>Expand</Wrapper>;
+export default function Expand() {
+  return (
+    <Wrapper>
+      <ListWrapper>
+        <ListItem1>
+          <Heading>Current Timezone</Heading>
+          <SugHeading>Europe/London</SugHeading>
+        </ListItem1>
+        <ListItem2>
+          <Heading>Day of the year</Heading>
+          <SugHeading>295</SugHeading>
+        </ListItem2>
+        <VerticalRule />
+        <ListItem3>
+          <Heading>Day of the week</Heading>
+          <SugHeading>5</SugHeading>
+        </ListItem3>
+        <ListItem4>
+          <Heading>Week number</Heading>
+          <SugHeading>42</SugHeading>
+        </ListItem4>
+      </ListWrapper>
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled.div`
-  width: 100%;
   height: 100%;
   color: hsl(var(--color-text));
-  background-color: hsl(var(--color-bg) / 0.5);
+  background-color: hsl(var(--color-bg) / 0.75);
+  padding: 48px 26px;
+
+  @media ${QUERIES.tabletAndUp} {
+    padding-inline-start: 64px;
+    padding-block: 119px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-inline-start: 165px;
+    padding-block: 74px;
+  }
 `;
 
-export default Expand;
+const ListWrapper = styled.ul`
+  display: grid;
+  grid-template-areas:
+    "item1"
+    "item2"
+    "item3"
+    "item4";
+  gap: 18px;
+  height: 100%;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-areas:
+      "item1 vline item3"
+      "item2 vline item4";
+    grid-template-columns: 1fr 94px 1fr;
+    gap: 64px 0;
+  }
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  @media ${QUERIES.tabletAndUp} {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    gap: 32px;
+  }
+`;
+
+const Heading = styled.h2`
+  font-size: 0.625rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  color: inherit;
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: 0.8125rem;
+    letter-spacing: 0.1625rem;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    font-size: 0.9375rem;
+    letter-spacing: 0.1875rem;
+  }
+`;
+
+const SugHeading = styled.span`
+  font-size: 20px;
+  font-weight: 700;
+  color: inherit;
+
+  @media ${QUERIES.tabletAndUp} {
+    font-size: 2.5rem;
+    letter-spacing: 0;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    font-size: 3.5rem;
+  }
+`;
+
+const VerticalRule = styled.li`
+  grid-area: vline;
+  display: none;
+  background-color: hsl(var(--color-text) / 0.25);
+
+  @media ${QUERIES.laptopAndUp} {
+    display: block;
+    width: 1px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+`;
+
+const ListItem1 = styled(ListItem)`
+  grid-area: item1;
+`;
+const ListItem2 = styled(ListItem)`
+  grid-area: item2;
+`;
+
+const ListItem3 = styled(ListItem)`
+  grid-area: item3;
+`;
+
+const ListItem4 = styled(ListItem)`
+  grid-area: item4;
+`;
