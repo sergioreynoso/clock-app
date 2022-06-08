@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Icon from "../../public/images/icon-refresh.svg";
 import { COLORS, QUERIES } from "../../utils/constants";
+import { MainContext } from "../../utils/context";
 
 export default function Quotes() {
+  const { quote } = useContext(MainContext);
   return (
     <Wrapper>
       <QuoteWrapper>
-        <Quote>
-          {`“The science of operations, as derived from mathematics more especially, 
-             is a science of itself, and has its own abstract truth and value.”`}
-        </Quote>
-        <Author>{`Ada Lovelace`}</Author>
+        <Quote>{quote.en}</Quote>
+        <Author>{quote.author}</Author>
       </QuoteWrapper>
       <Button>
         <RefreshIcon />

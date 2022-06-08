@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import BackgroundImage from "../components/BackgroundImage";
@@ -6,6 +6,7 @@ import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, QUERIES } from "../utils/constants";
 import { getLocation, getRandomQuote, getTimeZone } from "../utils/api";
+import { MainContext } from "../utils/context";
 
 export const getServerSideProps = async () => {
   const location = await getLocation();
@@ -31,16 +32,12 @@ export default function Home({ location, timezone, quote }) {
     return null;
   }
 
-  // console.log(locationData, timezone, quote);
-
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <Main
-          isExpand={isExpand}
-          setIsExpand={setIsExpand}
-          data={{ location, timezone }}
-        />
+        <MainContext.Provider value={{ location, timezone, quote }}>
+          <Main isExpand={isExpand} setIsExpand={setIsExpand} />
+        </MainContext.Provider>
       </MainWrapper>
       <ExpandWrapper isExpand={isExpand}>
         <Expand data={timezone} />
