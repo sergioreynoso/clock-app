@@ -14,7 +14,7 @@ export default function Expand() {
           <Heading>Day of the year</Heading>
           <SugHeading>295</SugHeading>
         </ListItem2>
-        <VerticalRule />
+        <VerticalLine />
         <ListItem3>
           <Heading>Day of the week</Heading>
           <SugHeading>5</SugHeading>
@@ -112,7 +112,7 @@ const SugHeading = styled.span`
   }
 `;
 
-const VerticalRule = styled.li`
+const VerticalLine = styled.li`
   grid-area: vline;
   display: none;
   background-color: hsl(var(--color-text) / 0.25);
@@ -131,11 +131,9 @@ const ListItem1 = styled(ListItem)`
 const ListItem2 = styled(ListItem)`
   grid-area: item2;
 `;
-
 const ListItem3 = styled(ListItem)`
   grid-area: item3;
 `;
-
 const ListItem4 = styled(ListItem)`
   grid-area: item4;
 `;

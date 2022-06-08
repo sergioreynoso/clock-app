@@ -66,9 +66,12 @@ const MainWrapper = styled.div`
   transform: translateY(
     calc(var(--expand-height) * ${({ isExpand }) => (isExpand ? "-1" : "0")})
   );
-  transition: transform ${ANIMATION_TIME.medium} ease-in-out,
-    padding-block-end ${ANIMATION_TIME.medium} ease-in-out;
   will-change: transform;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform ${ANIMATION_TIME.medium} ease-in-out,
+      padding-block-end ${ANIMATION_TIME.medium} ease-in-out;
+  }
 
   @media ${QUERIES.tabletAndUp} {
     padding-inline: 64px;
@@ -90,7 +93,9 @@ const ExpandWrapper = styled.div`
   bottom: 0;
 
   height: var(--expand-height);
-  transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
-  transition: transform ${ANIMATION_TIME.medium} ease-in-out;
   will-change: transform;
+  transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform ${ANIMATION_TIME.medium} ease-in-out;
+  }
 `;

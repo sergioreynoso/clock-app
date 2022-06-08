@@ -50,7 +50,10 @@ const Icon = styled(IconArrowUp)`
   width: 32px;
   height: 32px;
   transform: rotate(${({ $isExpand }) => ($isExpand ? "180deg" : "0deg")});
-  transition: transform ${ANIMATION_TIME.medium} ease-in-out;
+  will-change: transform;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform ${ANIMATION_TIME.medium} ease-in-out;
+  }
 
   @media ${QUERIES.laptopAndUp} {
     width: 40px;
