@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Icon from "../../public/images/icon-refresh.svg";
 import { getRandomQuote } from "../../utils/api";
-import { COLORS, QUERIES } from "../../utils/constants";
+import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import { MainContext } from "../../utils/context";
 
 export default function Quotes() {
@@ -28,7 +28,7 @@ export default function Quotes() {
 
   return (
     <Wrapper>
-      <QuoteWrapper>
+      <QuoteWrapper key={quote.author}>
         <Quote>{quote.en}</Quote>
         <Author>{quote.author}</Author>
       </QuoteWrapper>
@@ -39,16 +39,31 @@ export default function Quotes() {
   );
 }
 
+const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
-  max-width: 540px;
 `;
 
 const QuoteWrapper = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   color: hsl(${COLORS.white});
   gap: 8px;
+
+  will-change: transform;
+  animation: ${FadeIn} 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+
   @media ${QUERIES.tabletAndUp} {
     gap: 13px;
   }
@@ -77,12 +92,13 @@ const Author = styled.span`
 const RefreshIcon = styled(Icon)`
   width: 18px;
   height: 18px;
+  transform: translateX(20px);
 `;
 
 const Button = styled.button`
   flex: 0 0 40px;
   display: flex;
-  justify-content: center;
+  justify-content: flex;
   align-items: center;
   height: 40px;
   background-color: transparent;

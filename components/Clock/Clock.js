@@ -23,7 +23,7 @@ export default function Clock() {
         <Time>{time}</Time>
         <TimeZone>{timezone.abbreviation}</TimeZone>
       </TimeWrapper>
-      <Location>{`${location.region_name}, ${location.region_code}`}</Location>
+      <Location>{`${location.region}, ${location.region_code}`}</Location>
     </Wrapper>
   );
 }

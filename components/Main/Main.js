@@ -35,7 +35,7 @@ const Wrapper = styled.main`
 
   @media ${QUERIES.laptopAndUp} {
     grid-template-areas:
-      "quote quote"
+      "quote ."
       "clock button";
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);

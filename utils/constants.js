@@ -50,8 +50,7 @@ export const ANIMATION_TIME = {
 };
 
 export const END_POINTS = {
-  location:
-    "http://api.ipstack.com/check?access_key=6539708bce7a891320729592332bb65c&format=1",
+  location: "http://ipwho.is/",
   timezone: "http://worldtimeapi.org/api/ip",
   quotes: "https://programming-quotes-api.herokuapp.com/Quotes/random",
 };
