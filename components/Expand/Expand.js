@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import useSWR from "swr";
-import { getTimeZone } from "../../utils/api";
 import {
   ANIMATION_TIME,
   COLORS,
