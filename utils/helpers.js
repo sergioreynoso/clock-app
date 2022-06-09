@@ -1,3 +1,7 @@
+import SunCalc from "suncalc";
+
+export const fetcher = (...args) => fetch(...args).then(res => res.json());
+
 export const getCurrentTime = () =>
   `${new Date().getHours()}:${
     // Get minutes with a leading zero
@@ -10,4 +14,14 @@ export const getTimeOfDayGreeting = () => {
   if (hour >= 12 && hour <= 18) return "Afternoon";
   if (hour > 18 && hour < 24) return "Evening";
   return "day";
+};
+
+export const getSunPosition = coordinates => {
+  const times = SunCalc.getTimes(
+    new Date(),
+    coordinates.latitude,
+    coordinates.longitude
+  );
+  console.log(coordinates);
+  console.log(times.sunrise.getHours() + ":" + times.sunrise.getMinutes());
 };

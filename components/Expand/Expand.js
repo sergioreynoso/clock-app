@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
+import useSWR from "swr";
+import { getTimeZone } from "../../utils/api";
+import {
+  ANIMATION_TIME,
+  COLORS,
+  END_POINTS,
+  QUERIES,
+} from "../../utils/constants";
+import { fetcher } from "../../utils/helpers";
 
-export default function Expand({ data }) {
-  const { timezone, day_of_week, day_of_year, week_number } = data;
+export default function Expand() {
+  const { data, error } = useSWR(END_POINTS.timezone, fetcher);
+
+  if (error) {
+    return <Wrapper>Error loading data</Wrapper>;
+  }
+
+  if (!data) {
+    return <Wrapper>Loading....</Wrapper>;
+  }
+
   return (
     <Wrapper>
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
-          <SugHeading>{timezone.replace("_", " ")}</SugHeading>
+          <SugHeading>{data.timezone.replace("_", " ")}</SugHeading>
         </ListItem1>
         <ListItem2>
           <Heading>Day of the year</Heading>
-          <SugHeading>{day_of_year}</SugHeading>
+          <SugHeading>{data.day_of_year}</SugHeading>
         </ListItem2>
         <VerticalLine />
         <ListItem3>
           <Heading>Day of the week</Heading>
-          <SugHeading>{day_of_week + 1}</SugHeading>
+          <SugHeading>{data.day_of_week + 1}</SugHeading>
         </ListItem3>
         <ListItem4>
           <Heading>Week number</Heading>
-          <SugHeading>{week_number}</SugHeading>
+          <SugHeading>{data.week_number}</SugHeading>
         </ListItem4>
       </ListWrapper>
     </Wrapper>

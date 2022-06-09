@@ -3,13 +3,30 @@ import styled from "styled-components";
 import { useTheme } from "next-themes";
 import SunIcon from "../../public/images/icon-sun.svg";
 import MoonIcon from "../../public/images/icon-moon.svg";
-import { COLORS, QUERIES } from "../../utils/constants";
-import { MainContext } from "../../utils/context";
-import { getTimeOfDayGreeting } from "../../utils/helpers";
+import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
+import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
+import { getCurrentTime } from "../../utils/helpers";
+import useSWR from "swr";
 
 export default function Clock() {
   const { resolvedTheme } = useTheme();
-  const { time, location, timezone } = useContext(MainContext);
+  const [time, setTime] = useState(getCurrentTime());
+  const { data, error } = useSWR(END_POINTS.location, fetcher);
+
+  useEffect(() => {
+    const timeInt = setInterval(() => {
+      setTime(getCurrentTime());
+    }, 60000);
+    return () => clearInterval(timeInt);
+  }, []);
+
+  if (error) {
+    return <Wrapper>Error loading data</Wrapper>;
+  }
+
+  if (!data) {
+    return <Wrapper>Loading....</Wrapper>;
+  }
 
   return (
     <Wrapper>
@@ -21,9 +38,9 @@ export default function Clock() {
       </GreetingWrapper>
       <TimeWrapper>
         <Time>{time}</Time>
-        <TimeZone>{timezone.abbreviation}</TimeZone>
+        <TimeZone>{data.timezone.abbr}</TimeZone>
       </TimeWrapper>
-      <Location>{`${location.region}, ${location.region_code}`}</Location>
+      <Location>{`${data.region}, ${data.region_code}`}</Location>
     </Wrapper>
   );
 }

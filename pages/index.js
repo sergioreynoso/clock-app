@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect } from "react";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/700.css";
 import styled from "styled-components";
@@ -7,31 +7,12 @@ import BackgroundImage from "../components/BackgroundImage";
 import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, QUERIES } from "../utils/constants";
-import { getLocation, getRandomQuote, getTimeZone } from "../utils/api";
 import { MainContext } from "../utils/context";
-import { getCurrentTime } from "../utils/helpers";
 
-export const getServerSideProps = async () => {
-  const location = await getLocation();
-  const timezone = await getTimeZone();
-  const quote = await getRandomQuote();
-  return {
-    props: { location, timezone, quote },
-  };
-};
-
-export default function Home({ location, timezone, quote }) {
-  const [time, setTime] = useState(getCurrentTime());
+export default function Home() {
   const [isExpand, setIsExpand] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    const timeInt = setInterval(() => {
-      setTime(getCurrentTime());
-    }, 60000);
-    return () => clearInterval(timeInt);
-  }, []);
 
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
@@ -46,14 +27,12 @@ export default function Home({ location, timezone, quote }) {
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <MainContext.Provider
-          value={{ isExpand, setIsExpand, time, location, timezone, quote }}
-        >
+        <MainContext.Provider value={{ isExpand, setIsExpand }}>
           <Main />
         </MainContext.Provider>
       </MainWrapper>
       <ExpandWrapper isExpand={isExpand}>
-        <Expand data={timezone} />
+        <Expand />
       </ExpandWrapper>
       <BackgroundImage />
     </Wrapper>

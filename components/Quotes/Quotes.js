@@ -1,38 +1,46 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
+import useSWR, { useSWRConfig } from "swr";
 import Icon from "../../public/images/icon-refresh.svg";
-import { getRandomQuote } from "../../utils/api";
-import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
-import { MainContext } from "../../utils/context";
+import {
+  ANIMATION_TIME,
+  COLORS,
+  END_POINTS,
+  QUERIES,
+} from "../../utils/constants";
+import { fetcher } from "../../utils/helpers";
 
 export default function Quotes() {
-  const [quote, setQuote] = useState(useContext(MainContext).quote);
-  const [isLoading, setIsLoading] = useState(false);
+  const { mutate } = useSWRConfig();
+  const { data, error } = useSWR(END_POINTS.quotes, fetcher);
 
-  const upDate = async () => {
-    setIsLoading(true);
-    const quote = await getRandomQuote();
-    setQuote(quote);
-    setIsLoading(false);
+  const onClickHandler = () => {
+    mutate(END_POINTS.quotes);
   };
 
-  if (isLoading) {
+  if (error) {
     return (
-      <Wrapper>
-        <QuoteWrapper>
-          <Author>Loading Quote...</Author>
-        </QuoteWrapper>
-      </Wrapper>
+      <QuoteWrapper>
+        <Author>Error loading quotes</Author>
+      </QuoteWrapper>
+    );
+  }
+
+  if (!data) {
+    return (
+      <QuoteWrapper>
+        <Author>Loading...</Author>
+      </QuoteWrapper>
     );
   }
 
   return (
     <Wrapper>
-      <QuoteWrapper key={quote.author}>
-        <Quote>{quote.en}</Quote>
-        <Author>{quote.author}</Author>
+      <QuoteWrapper key={data.author}>
+        <Quote>{data.en}</Quote>
+        <Author>{data.author}</Author>
       </QuoteWrapper>
-      <Button onClick={upDate}>
+      <Button onClick={onClickHandler}>
         <RefreshIcon />
       </Button>
     </Wrapper>
@@ -60,7 +68,7 @@ const QuoteWrapper = styled.div`
   gap: 8px;
 
   will-change: transform;
-  animation: ${FadeIn} 1s;
+  animation: ${FadeIn} ${ANIMATION_TIME.slow};
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
 
