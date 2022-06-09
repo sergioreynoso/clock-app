@@ -51,6 +51,6 @@ export const ANIMATION_TIME = {
 
 export const END_POINTS = {
   location: "http://ipwho.is/",
-  timezone: "http://worldtimeapi.org/api/ip",
+  timezone: "https://worldtimeapi.org/api/ip",
   quotes: "https://programming-quotes-api.herokuapp.com/Quotes/random",
 };
