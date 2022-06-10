@@ -38,7 +38,7 @@ const Wrapper = styled.main`
       "quote ."
       "clock button";
     grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.2fr 1fr;
   }
 `;
 

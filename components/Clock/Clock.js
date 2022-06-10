@@ -27,8 +27,6 @@ export default function Clock() {
   if (!data) {
     return <Wrapper>Loading....</Wrapper>;
   }
-
-  console.log(data);
   return (
     <Wrapper>
       <GreetingWrapper>
@@ -87,8 +85,9 @@ const Greeting = styled.span`
 
 const TimeWrapper = styled.div`
   display: flex;
+  justify-content: flex-start;
   align-items: baseline;
-  gap: 12px;
+  gap: 16px;
 `;
 
 const Time = styled.h1`
