@@ -2,23 +2,28 @@ import { useState, useEffect } from "react";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/700.css";
 import styled from "styled-components";
-import { useTheme } from "next-themes";
 import BackgroundImage from "../components/BackgroundImage";
 import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, FADE_IN, QUERIES } from "../utils/constants";
 import { MainContext } from "../utils/context";
+import { useSun } from "../hooks/useSun";
+import { useTheme } from "next-themes";
 
 export default function Home() {
-  const [isExpand, setIsExpand] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
+  const [isExpand, setIsExpand] = useState(false);
+  const sun = useSun();
 
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
     setMounted(true);
-    // setTheme("light");
-  }, [setTheme]);
+  }, []);
+
+  useEffect(() => {
+    setTheme(sun);
+  }, [setTheme, sun]);
 
   if (!mounted) {
     return null;
@@ -27,7 +32,12 @@ export default function Home() {
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <MainContext.Provider value={{ isExpand, setIsExpand }}>
+        <MainContext.Provider
+          value={{
+            isExpand,
+            setIsExpand,
+          }}
+        >
           <Main />
         </MainContext.Provider>
       </MainWrapper>
@@ -104,7 +114,7 @@ const ExpandWrapper = styled.div`
 
   height: var(--expand-height);
   will-change: transform;
-  transform: translateY(${({ isExpand }) => (isExpand ? "0" : "100%")});
+  transform: translateY(${({ isExpand }) => (isExpand ? "1000" : "100%")});
   @media (prefers-reduced-motion: no-preference) {
     transition: transform ${ANIMATION_TIME.medium} ease-in-out;
   }

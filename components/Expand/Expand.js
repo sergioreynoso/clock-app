@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import useSWR from "swr";
-import {
-  ANIMATION_TIME,
-  COLORS,
-  END_POINTS,
-  QUERIES,
-} from "../../utils/constants";
+import { END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
 
 export default function Expand() {

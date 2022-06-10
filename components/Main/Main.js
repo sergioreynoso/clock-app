@@ -5,7 +5,7 @@ import Clock from "../Clock";
 import ExpandButton from "../ExpandButton";
 import Quotes from "../Quotes";
 
-function Main({ isExpand, setIsExpand }) {
+function Main() {
   return (
     <Wrapper>
       <QuotesWrapper>
