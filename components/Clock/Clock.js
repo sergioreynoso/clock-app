@@ -11,7 +11,9 @@ import useSWR from "swr";
 export default function Clock() {
   const { resolvedTheme } = useTheme();
   const [time, setTime] = useState(getCurrentTime());
-  const { data, error } = useSWR(END_POINTS.location, fetcher);
+  const { data, error } = useSWR(END_POINTS.location, fetcher, {
+    refreshInterval: 0,
+  });
 
   useEffect(() => {
     const timeInt = setInterval(() => {

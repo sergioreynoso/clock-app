@@ -10,7 +10,9 @@ import {
 import { fetcher } from "../../utils/helpers";
 
 export default function Expand() {
-  const { data, error } = useSWR(END_POINTS.timezone, fetcher);
+  const { data, error } = useSWR(END_POINTS.timezone, fetcher, {
+    refreshInterval: 0,
+  });
 
   if (error) {
     return <Wrapper>Error loading data</Wrapper>;
