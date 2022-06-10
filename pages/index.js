@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import BackgroundImage from "../components/BackgroundImage";
 import Main from "../components/Main";
 import Expand from "../components/Expand";
-import { ANIMATION_TIME, QUERIES } from "../utils/constants";
+import { ANIMATION_TIME, FADE_IN, QUERIES } from "../utils/constants";
 import { MainContext } from "../utils/context";
 
 export default function Home() {
@@ -48,6 +48,11 @@ const Wrapper = styled.div`
   height: 100%;
   min-height: 667px;
   overflow: hidden;
+
+  will-change: transform;
+  animation: ${FADE_IN} ${ANIMATION_TIME.slow};
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
 
   @media ${QUERIES.tabletAndUp} {
     --expand-height: 43%;

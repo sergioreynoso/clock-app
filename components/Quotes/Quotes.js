@@ -6,6 +6,7 @@ import {
   ANIMATION_TIME,
   COLORS,
   END_POINTS,
+  FADE_IN,
   QUERIES,
 } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
@@ -68,7 +69,7 @@ const QuoteWrapper = styled.div`
   gap: 8px;
 
   will-change: transform;
-  animation: ${FadeIn} ${ANIMATION_TIME.slow};
+  animation: ${FADE_IN} ${ANIMATION_TIME.slow};
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
 

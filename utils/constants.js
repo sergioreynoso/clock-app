@@ -1,4 +1,6 @@
-export const BREAKPOINTS = {
+import { keyframes } from "styled-components";
+
+const BREAKPOINTS = {
   tabletMin: 599,
   laptopMin: 1100,
   desktopMin: 1400,
@@ -54,3 +56,12 @@ export const END_POINTS = {
   timezone: "https://worldtimeapi.org/api/ip",
   quotes: "https://programming-quotes-api.herokuapp.com/Quotes/random",
 };
+
+export const FADE_IN = keyframes`
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
+`;
