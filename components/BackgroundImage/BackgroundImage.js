@@ -3,6 +3,8 @@ import Image from "next/image";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import { BACKGROUND_IMAGES, COLORS } from "../../utils/constants";
+import DayImage from "../../public/images/background_day.jpg";
+import NightImage from "../../public/images/background_night.jpg";
 
 function BackgroundImage() {
   const { resolvedTheme } = useTheme();
@@ -10,10 +12,10 @@ function BackgroundImage() {
 
   switch (resolvedTheme) {
     case "light":
-      src = `${BACKGROUND_IMAGES.light}`;
+      src = DayImage;
       break;
     case "dark":
-      src = `${BACKGROUND_IMAGES.dark}`;
+      src = NightImage;
       break;
     default:
       src =
@@ -26,6 +28,7 @@ function BackgroundImage() {
       <BgImage
         src={src}
         alt="background image"
+        placeholder="blur"
         layout="fill"
         objectFit="cover"
         objectPosition="top center"

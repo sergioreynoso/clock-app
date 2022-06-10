@@ -27,20 +27,20 @@ export default function Expand() {
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
-          <SugHeading>{data.timezone.replace("_", " ")}</SugHeading>
+          <SugHeading>{data?.timezone.replace("_", " ")}</SugHeading>
         </ListItem1>
         <ListItem2>
           <Heading>Day of the year</Heading>
-          <SugHeading>{data.day_of_year}</SugHeading>
+          <SugHeading>{data?.day_of_year}</SugHeading>
         </ListItem2>
         <VerticalLine />
         <ListItem3>
           <Heading>Day of the week</Heading>
-          <SugHeading>{data.day_of_week + 1}</SugHeading>
+          <SugHeading>{data?.day_of_week + 1}</SugHeading>
         </ListItem3>
         <ListItem4>
           <Heading>Week number</Heading>
-          <SugHeading>{data.week_number}</SugHeading>
+          <SugHeading>{data?.week_number}</SugHeading>
         </ListItem4>
       </ListWrapper>
     </Wrapper>
