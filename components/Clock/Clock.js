@@ -11,7 +11,7 @@ import useSWR from "swr";
 export default function Clock() {
   const { resolvedTheme } = useTheme();
   const [time, setTime] = useState(getCurrentTime());
-  const { data, error } = useSWR(END_POINTS.timezone, fetcher);
+  const { data, error } = useSWR(END_POINTS.location, fetcher);
 
   useEffect(() => {
     const timeInt = setInterval(() => {
@@ -27,6 +27,8 @@ export default function Clock() {
   if (!data) {
     return <Wrapper>Loading....</Wrapper>;
   }
+
+  console.log(data);
   return (
     <Wrapper>
       <GreetingWrapper>
@@ -37,9 +39,9 @@ export default function Clock() {
       </GreetingWrapper>
       <TimeWrapper>
         <Time>{time}</Time>
-        <TimeZone>{data?.abbreviation}</TimeZone>
+        <TimeZone>{data?.timezone.abbr}</TimeZone>
       </TimeWrapper>
-      <Location>{data?.timezone.replace("_", " ")}</Location>
+      <Location>{`${data?.region}, ${data?.region_code}`}</Location>
     </Wrapper>
   );
 }

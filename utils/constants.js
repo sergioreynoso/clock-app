@@ -50,8 +50,7 @@ export const ANIMATION_TIME = {
 };
 
 export const END_POINTS = {
-  location:
-    "https://geo.ipify.org/api/v2/country,city?apiKey=at_A186qwOvyRXDJsXEiek44YeU1tOgC",
+  location: "https://ipwho.is/",
   timezone: "https://worldtimeapi.org/api/ip",
   quotes: "https://programming-quotes-api.herokuapp.com/Quotes/random",
 };
