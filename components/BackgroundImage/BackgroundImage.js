@@ -8,25 +8,11 @@ import NightImage from "../../public/images/background_night.jpg";
 
 function BackgroundImage() {
   const { resolvedTheme } = useTheme();
-  let src;
-
-  switch (resolvedTheme) {
-    case "light":
-      src = DayImage;
-      break;
-    case "dark":
-      src = NightImage;
-      break;
-    default:
-      src =
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-      break;
-  }
 
   return (
     <BgImageWrapper>
       <BgImage
-        src={src}
+        src={resolvedTheme === "light" ? DayImage : NightImage}
         alt="background image"
         placeholder="blur"
         layout="fill"
