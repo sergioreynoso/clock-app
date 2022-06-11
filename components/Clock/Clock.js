@@ -7,6 +7,7 @@ import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
 import { getCurrentTime } from "../../utils/helpers";
 import useSWR from "swr";
+import { useSun } from "../../hooks/useSun";
 
 export default function Clock() {
   const { resolvedTheme } = useTheme();
@@ -14,6 +15,7 @@ export default function Clock() {
   const { data, error } = useSWR(END_POINTS.location, fetcher, {
     refreshInterval: 0,
   });
+  const sun = useSun(data);
 
   useEffect(() => {
     const timeInt = setInterval(() => {
@@ -22,13 +24,9 @@ export default function Clock() {
     return () => clearInterval(timeInt);
   }, []);
 
-  if (error) {
-    return <Wrapper>Error loading data</Wrapper>;
-  }
+  if (error) return <Wrapper>Error loading data</Wrapper>;
+  if (!data) return <Wrapper>Loading....</Wrapper>;
 
-  if (!data) {
-    return <Wrapper>Loading....</Wrapper>;
-  }
   return (
     <Wrapper>
       <GreetingWrapper>

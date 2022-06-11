@@ -7,27 +7,21 @@ import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, FADE_IN, QUERIES } from "../utils/constants";
 import { MainContext } from "../utils/context";
-import { useSun } from "../hooks/useSun";
-import { useTheme } from "next-themes";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const { setTheme } = useTheme();
   const [isExpand, setIsExpand] = useState(false);
-  const sun = useSun();
 
   // Delays rendering until UI has been mounted on the client to prevents hydration errors
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    setTheme(sun);
-  }, [setTheme, sun]);
-
   if (!mounted) {
     return null;
   }
+
+  console.log("Rendering");
 
   return (
     <Wrapper>

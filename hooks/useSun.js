@@ -5,12 +5,13 @@ import { END_POINTS } from "../utils/constants";
 import { fetcher } from "../utils/helpers";
 import SunCalc from "suncalc";
 
-export const useSun = () => {
-  const { data, error } = useSWR(END_POINTS.location, fetcher, {
-    refreshInterval: 0,
-  });
-  const times = SunCalc.getTimes(new Date(), data?.latitude, data?.longitude);
-  // const sunrise = times.sunrise.getHours() + ":" + times.sunrise.getMinutes();
-
-  return times.sunset < new Date() ? "dark" : "light";
+export const useSun = data => {
+  const { setTheme } = useTheme();
+  setTheme("light");
+  if (!data) return;
+  const { latitude, longitude } = data;
+  const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
+  const theme = times.sunset <= new Date() ? "dark" : "light";
+  console.log(theme, times.sunset);
+  setTheme(theme);
 };
