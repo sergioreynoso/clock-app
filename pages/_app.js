@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <GlobalStyles />
-      <ThemeProvider>
+      <ThemeProvider defaultTheme="light" enableSystem={false}>
         <Component {...pageProps} />
       </ThemeProvider>
     </>

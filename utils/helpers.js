@@ -16,3 +16,16 @@ export const getTimeOfDayGreeting = () => {
   if (hour > 18 && hour < 24) return "Evening";
   return "day";
 };
+
+export const getSunAltitude = data => {
+  if (!data) return;
+  const { latitude, longitude } = data;
+  const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
+  const position = SunCalc.getPosition(
+    times.solarNoon,
+    data.latitude,
+    data.longitude
+  );
+  console.log(position.altitude);
+  return position.altitude;
+};
