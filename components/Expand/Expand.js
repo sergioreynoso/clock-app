@@ -6,6 +6,8 @@ import { fetcher } from "../../utils/helpers";
 
 export default function Expand() {
   const { data, error } = useSWR(END_POINTS.timezone, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
     refreshInterval: 0,
   });
 
