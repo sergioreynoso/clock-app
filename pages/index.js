@@ -6,7 +6,6 @@ import BackgroundImage from "../components/BackgroundImage";
 import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, FADE_IN, QUERIES } from "../utils/constants";
-import { MainContext } from "../utils/context";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -21,19 +20,10 @@ export default function Home() {
     return null;
   }
 
-  console.log("Rendering");
-
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
-        <MainContext.Provider
-          value={{
-            isExpand,
-            setIsExpand,
-          }}
-        >
-          <Main />
-        </MainContext.Provider>
+        <Main isExpand={isExpand} setIsExpand={setIsExpand} />
       </MainWrapper>
       <ExpandWrapper isExpand={isExpand}>
         <Expand />

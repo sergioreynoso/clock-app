@@ -25,7 +25,9 @@ export default function Clock() {
   }, []);
 
   useEffect(() => {
-    getSunAltitude(data) <= 0 ? setTheme("dark") : setTheme("light");
+    getSunAltitude({ latitude: 40.7128, longitude: 74.006 }) <= 0
+      ? setTheme("dark")
+      : setTheme("light");
   }, [time, setTheme, data]);
 
   if (error) return <Wrapper>Error loading data</Wrapper>;
