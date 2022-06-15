@@ -10,6 +10,7 @@ import {
   QUERIES,
 } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Quotes = () => {
   const { mutate } = useSWRConfig();
@@ -46,6 +47,7 @@ const Quotes = () => {
         <Author>{data.author}</Author>
       </QuoteWrapper>
       <Button onClick={onClickHandler}>
+        <VisuallyHidden>Refresh quote</VisuallyHidden>
         <RefreshIcon />
       </Button>
     </Wrapper>
@@ -105,17 +107,17 @@ const Author = styled.span`
 const RefreshIcon = styled(Icon)`
   width: 18px;
   height: 18px;
-  transform: translateX(20px);
+  fill: hsl(${COLORS.white});
 `;
 
 const Button = styled.button`
   flex: 0 0 40px;
   display: flex;
-  justify-content: flex;
+  justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: transparent;
-  transform: translateY(-2px);
+  background-color: none;
+  transform: translate(22px, -2px);
 `;
 
 export default memo(Quotes);

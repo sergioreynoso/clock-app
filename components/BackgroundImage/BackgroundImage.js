@@ -13,7 +13,7 @@ const BackgroundImage = () => {
     <BgImageWrapper>
       <BgImage
         src={resolvedTheme === "light" ? DayImage : NightImage}
-        alt="background image"
+        alt=""
         placeholder="blur"
         layout="fill"
         objectFit="cover"

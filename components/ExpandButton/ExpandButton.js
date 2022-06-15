@@ -37,7 +37,7 @@ const Label = styled.span`
   font-weight: 700;
   letter-spacing: 0.2344rem;
   text-transform: uppercase;
-  color: hsl(${COLORS.grey} / 0.5);
+  color: hsl(${COLORS.black} / 0.65);
 
   @media ${QUERIES.laptopAndUp} {
     font-size: 1rem;

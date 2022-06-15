@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Head from "next/head";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/700.css";
 import styled from "styled-components";
@@ -21,15 +22,20 @@ const Home = () => {
   }
 
   return (
-    <Wrapper>
-      <MainWrapper isExpand={isExpand}>
-        <Main isExpand={isExpand} setIsExpand={setIsExpand} />
-      </MainWrapper>
-      <ExpandWrapper isExpand={isExpand}>
-        <Expand />
-      </ExpandWrapper>
-      <BackgroundImage />
-    </Wrapper>
+    <>
+      <Head>
+        <title>Frontend Mentor - Clock App</title>
+      </Head>
+      <Wrapper>
+        <MainWrapper isExpand={isExpand}>
+          <Main isExpand={isExpand} setIsExpand={setIsExpand} />
+        </MainWrapper>
+        <ExpandWrapper isExpand={isExpand}>
+          <Expand />
+        </ExpandWrapper>
+        <BackgroundImage />
+      </Wrapper>
+    </>
   );
 };
 
