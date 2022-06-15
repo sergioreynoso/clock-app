@@ -50,6 +50,10 @@ const Wrapper = styled.div`
   background-color: hsl(var(--color-bg) / 0.75);
   padding: 48px 26px;
 
+  @supports (backdrop-filter: blur(5px)) {
+    backdrop-filter: blur(5px);
+  }
+
   @media ${QUERIES.tabletAndUp} {
     padding-inline-start: 64px;
     padding-block: 119px;
