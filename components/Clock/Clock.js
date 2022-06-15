@@ -19,17 +19,15 @@ const Clock = () => {
 
   useEffect(() => {
     const timeInt = setInterval(() => {
-      setTime(getCurrentTime(data.timezone.id));
-    }, 60000);
+      setTime(getCurrentTime());
+    }, 10000);
     return () => clearInterval(timeInt);
   }, [data]);
 
-  useEffect(() => {
-    isSunSet(data) ? setTheme("dark") : setTheme("light");
-  }, [data, setTheme]);
-
   if (error) return <Wrapper>Error loading data</Wrapper>;
   if (!data) return <Wrapper>Loading....</Wrapper>;
+
+  isSunSet(data) ? setTheme("dark") : setTheme("light");
 
   return (
     <Wrapper>

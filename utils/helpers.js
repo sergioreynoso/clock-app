@@ -2,7 +2,7 @@ import SunCalc from "suncalc";
 
 export const fetcher = (...args) => fetch(...args).then(res => res.json());
 
-export const getCurrentTime = timeZone => {
+export const getCurrentTime = () => {
   const date = new Date();
   return date.toLocaleTimeString([], {
     hour12: false,
