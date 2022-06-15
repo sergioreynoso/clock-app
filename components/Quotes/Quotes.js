@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled, { keyframes } from "styled-components";
 import useSWR, { useSWRConfig } from "swr";
 import Icon from "../../public/images/icon-refresh.svg";
@@ -11,9 +11,13 @@ import {
 } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
 
-export default function Quotes() {
+const Quotes = () => {
   const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(END_POINTS.quotes, fetcher);
+  const { data, error } = useSWR(END_POINTS.quotes, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    refreshInterval: 0,
+  });
 
   const onClickHandler = () => {
     mutate(END_POINTS.quotes);
@@ -46,7 +50,7 @@ export default function Quotes() {
       </Button>
     </Wrapper>
   );
-}
+};
 
 const FadeIn = keyframes`
   from {
@@ -113,3 +117,5 @@ const Button = styled.button`
   background-color: transparent;
   transform: translateY(-2px);
 `;
+
+export default memo(Quotes);

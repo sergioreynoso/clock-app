@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, memo } from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import SunIcon from "../../public/images/icon-sun.svg";
@@ -8,7 +8,7 @@ import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
 import { getCurrentTime, getSunAltitude } from "../../utils/helpers";
 import useSWR from "swr";
 
-export default function Clock() {
+const Clock = () => {
   const { theme, setTheme } = useTheme();
   const [time, setTime] = useState(getCurrentTime());
   const { data, error } = useSWR(END_POINTS.location, fetcher, {
@@ -48,7 +48,7 @@ export default function Clock() {
       <Location>{`${data?.region}, ${data?.region_code}`}</Location>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -139,3 +139,5 @@ const Location = styled.span`
     letter-spacing: 0.3rem;
   }
 `;
+
+export default memo(Clock);

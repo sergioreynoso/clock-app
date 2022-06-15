@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import useSWR from "swr";
 import { END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
 
-export default function Expand() {
+const Expand = () => {
   const { data, error } = useSWR(END_POINTS.timezone, fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
@@ -42,7 +42,7 @@ export default function Expand() {
       </ListWrapper>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   height: 100%;
@@ -153,3 +153,5 @@ const ListItem3 = styled(ListItem)`
 const ListItem4 = styled(ListItem)`
   grid-area: item4;
 `;
+
+export default memo(Expand);

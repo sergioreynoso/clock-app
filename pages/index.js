@@ -7,7 +7,7 @@ import Main from "../components/Main";
 import Expand from "../components/Expand";
 import { ANIMATION_TIME, FADE_IN, QUERIES } from "../utils/constants";
 
-export default function Home() {
+const Home = () => {
   const [mounted, setMounted] = useState(false);
   const [isExpand, setIsExpand] = useState(false);
 
@@ -31,7 +31,7 @@ export default function Home() {
       <BackgroundImage />
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.div`
   /* Sets the height of the Expand component in percent*/
@@ -98,8 +98,10 @@ const ExpandWrapper = styled.div`
 
   height: var(--expand-height);
   will-change: transform;
-  transform: translateY(${({ isExpand }) => (isExpand ? "1000" : "100%")});
+  transform: translateY(${({ isExpand }) => (isExpand ? "0%" : "100%")});
   @media (prefers-reduced-motion: no-preference) {
     transition: transform ${ANIMATION_TIME.medium} ease-in-out;
   }
 `;
+
+export default Home;

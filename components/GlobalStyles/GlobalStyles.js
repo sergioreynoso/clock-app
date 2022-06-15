@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: "Inter", monospace;
     line-height: ${LINE_HEIGHT.regular};
-    background-color: ${COLORS.black};
+    background-color: hsl(${COLORS.black});
   }
 
   #__next { 

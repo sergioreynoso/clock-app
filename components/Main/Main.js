@@ -5,7 +5,7 @@ import Clock from "../Clock";
 import ExpandButton from "../ExpandButton";
 import Quotes from "../Quotes";
 
-function Main({ isExpand, setIsExpand }) {
+const Main = ({ isExpand, setIsExpand }) => {
   const onClickHandler = () => {
     setIsExpand(expand => (expand ? false : true));
   };
@@ -18,12 +18,12 @@ function Main({ isExpand, setIsExpand }) {
       <ClockWrapper>
         <Clock />
       </ClockWrapper>
-      <ButtonWrapper onClick={onClickHandler}>
-        <ExpandButton isExpand={isExpand} />
+      <ButtonWrapper>
+        <ExpandButton isToggled={isExpand} onClick={onClickHandler} />
       </ButtonWrapper>
     </Wrapper>
   );
-}
+};
 
 const Wrapper = styled.main`
   display: grid;

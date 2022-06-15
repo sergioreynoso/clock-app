@@ -1,12 +1,12 @@
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
-import { BACKGROUND_IMAGES, COLORS } from "../../utils/constants";
+import { COLORS } from "../../utils/constants";
 import DayImage from "../../public/images/background_day.jpg";
 import NightImage from "../../public/images/background_night.jpg";
 
-function BackgroundImage() {
+const BackgroundImage = () => {
   const { resolvedTheme } = useTheme();
 
   return (
@@ -22,7 +22,7 @@ function BackgroundImage() {
       />
     </BgImageWrapper>
   );
-}
+};
 
 const BgImageWrapper = styled.div`
   position: absolute;
@@ -38,4 +38,4 @@ const BgImage = styled(Image)`
   opacity: 0.4;
 `;
 
-export default BackgroundImage;
+export default memo(BackgroundImage);

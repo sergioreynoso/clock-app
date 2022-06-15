@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
-import { MainContext } from "../../utils/context";
 
-export default function ExpandButton({ onClick, isExpand }) {
+export default function ExpandButton({ isToggled, onClick }) {
   return (
     <Button onClick={onClick}>
-      <Label>{isExpand ? "Less" : "More"}</Label>
+      <Label>{isToggled ? "Less" : "More"}</Label>
       {/* The '$' sign on the prop name makes it a transient prop. 
       It wont get passed down to the child component */}
-      <Icon $isExpand={isExpand} />
+      <Icon $isToggled={isToggled} />
     </Button>
   );
 }
@@ -50,7 +48,7 @@ const Label = styled.span`
 const Icon = styled(IconArrowUp)`
   width: 32px;
   height: 32px;
-  transform: rotate(${({ $isExpand }) => ($isExpand ? "180deg" : "0deg")});
+  transform: rotate(${({ $isToggled }) => ($isToggled ? "180deg" : "0deg")});
   will-change: transform;
   @media (prefers-reduced-motion: no-preference) {
     transition: transform ${ANIMATION_TIME.medium} ease-in-out;
