@@ -48,7 +48,12 @@ const Label = styled.span`
 const Icon = styled(IconArrowUp)`
   width: 32px;
   height: 32px;
-  transform: rotate(${({ $isToggled }) => ($isToggled ? "180deg" : "0deg")});
+  transform: rotate(${({ $isToggled }) => ($isToggled ? "0deg" : "180deg")});
+
+  ${Button}:hover & {
+    opacity: 0.5;
+  }
+
   will-change: transform;
   @media (prefers-reduced-motion: no-preference) {
     transition: transform ${ANIMATION_TIME.medium} ease-in-out;
