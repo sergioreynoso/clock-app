@@ -6,18 +6,7 @@ import Expand from "../Expand";
 import { ANIMATION_TIME, FADE_IN, QUERIES } from "../../utils/constants";
 
 const ClockApp = () => {
-  const [mounted, setMounted] = useState(false);
   const [isExpand, setIsExpand] = useState(false);
-
-  // // Delays rendering until UI has been mounted on the client to prevents hydration errors
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
-
-  // if (!mounted) {
-  //   return null;
-  // }
-
   return (
     <Wrapper>
       <MainWrapper isExpand={isExpand}>
