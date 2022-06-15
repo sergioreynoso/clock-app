@@ -24,6 +24,6 @@ export const isSunSet = data => {
   const hour = new Date().getHours();
   const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
   const sunrise = times.sunrise.getHours();
-  const sunset = times.sunrise.getHours();
+  const sunset = times.sunset.getHours();
   return hour >= sunrise && hour < sunset ? false : true;
 };
