@@ -1,17 +1,9 @@
 import SunCalc from "suncalc";
-import useSWR from "swr";
 
 export const fetcher = (...args) => fetch(...args).then(res => res.json());
 
-export const getCurrentTime = () => {
+export const getCurrentTime = timeZone => {
   const date = new Date();
-  // console.log(
-  //   typeof date.toLocaleTimeString([], {
-  //     hour12: false,
-  //     hour: "2-digit",
-  //     minute: "2-digit",
-  //   })
-  // );
   return date.toLocaleTimeString([], {
     hour12: false,
     hour: "2-digit",
@@ -27,15 +19,11 @@ export const getTimeOfDayGreeting = () => {
   return "day";
 };
 
-export const getSunAltitude = data => {
+export const isSunSet = data => {
   if (!data) return;
-  const { latitude, longitude } = data;
+  const hour = new Date().getHours();
   const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
-  const position = SunCalc.getPosition(
-    times.solarNoon,
-    data.latitude,
-    data.longitude
-  );
-  // console.log(position.altitude);
-  return position.altitude;
+  const sunrise = times.sunrise.getHours();
+  const sunset = times.sunrise.getHours();
+  return hour >= sunrise && hour < sunset ? false : true;
 };

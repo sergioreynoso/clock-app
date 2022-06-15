@@ -5,7 +5,7 @@ import SunIcon from "../../public/images/icon-sun.svg";
 import MoonIcon from "../../public/images/icon-moon.svg";
 import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
-import { getCurrentTime, getSunAltitude } from "../../utils/helpers";
+import { getCurrentTime, isSunSet } from "../../utils/helpers";
 import useSWR from "swr";
 
 const Clock = () => {
@@ -19,16 +19,14 @@ const Clock = () => {
 
   useEffect(() => {
     const timeInt = setInterval(() => {
-      setTime(getCurrentTime());
+      setTime(getCurrentTime(data.timezone.id));
     }, 60000);
     return () => clearInterval(timeInt);
-  }, []);
+  }, [data]);
 
   useEffect(() => {
-    getSunAltitude({ latitude: 40.7128, longitude: 74.006 }) <= 0
-      ? setTheme("dark")
-      : setTheme("light");
-  }, [time, setTheme, data]);
+    isSunSet(data) ? setTheme("dark") : setTheme("light");
+  }, [data, setTheme]);
 
   if (error) return <Wrapper>Error loading data</Wrapper>;
   if (!data) return <Wrapper>Loading....</Wrapper>;
