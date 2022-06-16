@@ -11,13 +11,8 @@ const Expand = () => {
     refreshInterval: 0,
   });
 
-  if (error) {
-    return <Wrapper>Error loading data</Wrapper>;
-  }
-
-  if (!data) {
-    return <Wrapper>Loading....</Wrapper>;
-  }
+  if (error) return <Wrapper>Error loading data</Wrapper>;
+  if (!data) return <Wrapper>Loading....</Wrapper>;
 
   return (
     <Wrapper>
