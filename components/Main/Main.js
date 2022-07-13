@@ -25,7 +25,7 @@ const Main = ({ isExpand, setIsExpand }) => {
   );
 };
 
-const Wrapper = styled.main`
+const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
     "quote"
