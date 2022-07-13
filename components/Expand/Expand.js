@@ -115,6 +115,7 @@ const Heading = styled.h2`
 const SugHeading = styled.span`
   font-size: 20px;
   font-weight: 700;
+  line-height: 1;
   color: inherit;
 
   @media ${QUERIES.tabletAndUp} {
