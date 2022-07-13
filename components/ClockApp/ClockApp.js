@@ -41,7 +41,7 @@ const Wrapper = styled.main`
   }
   @media ${QUERIES.laptopAndUp} {
     --expand-height: 50%;
-    min-height: 800px;
+    max-height: 800px;
   }
 `;
 
