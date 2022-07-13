@@ -37,7 +37,7 @@ const Wrapper = styled.main`
 
   @media ${QUERIES.tabletAndUp} {
     --expand-height: 43%;
-    min-height: 1024px;
+    /* min-height: 1024px; */
   }
   @media ${QUERIES.laptopAndUp} {
     --expand-height: 50%;
