@@ -18,7 +18,6 @@ const BackgroundImage = () => {
         layout="fill"
         objectFit="cover"
         objectPosition="top center"
-        priority
       />
     </BgImageWrapper>
   );
