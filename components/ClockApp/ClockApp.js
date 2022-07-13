@@ -20,7 +20,7 @@ const ClockApp = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.main`
   /* Sets the height of the Expand component in percent*/
   --expand-height: 38%;
 
