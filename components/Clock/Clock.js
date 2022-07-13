@@ -27,8 +27,7 @@ const Clock = () => {
   if (error) return <Wrapper>Error loading data</Wrapper>;
   if (!data) return <Wrapper>Loading....</Wrapper>;
 
-  // isSunSet(data) ? setTheme("dark") : setTheme("light");
-  false ? setTheme("dark") : setTheme("light");
+  isSunSet(data) ? setTheme("dark") : setTheme("light");
 
   return (
     <Wrapper>
