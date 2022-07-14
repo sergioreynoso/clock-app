@@ -32,9 +32,9 @@ const Clock = () => {
 
   return (
     <Wrapper>
-      <VisuallyHidden>
-        <h2>Time Of Day And Location</h2>
-      </VisuallyHidden>
+      <h2>
+        <VisuallyHidden>Time Of Day And Location</VisuallyHidden>
+      </h2>
       <GreetingWrapper>
         <IconWrapper>
           {theme === "light" ? <SunIcon /> : <MoonIcon />}
