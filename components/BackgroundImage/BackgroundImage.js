@@ -15,9 +15,7 @@ const BackgroundImage = () => {
         src={resolvedTheme === "light" ? DayImage : NightImage}
         alt=""
         placeholder="blur"
-        layout="fill"
-        objectFit="cover"
-        objectPosition="top center"
+        layout="raw"
       />
     </BgImageWrapper>
   );
@@ -32,6 +30,12 @@ const BgImageWrapper = styled.div`
   background-color: hsl(${COLORS.black});
   z-index: -1;
   opacity: 0.6;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export default memo(BackgroundImage);
