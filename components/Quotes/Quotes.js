@@ -42,6 +42,9 @@ const Quotes = () => {
 
   return (
     <Wrapper>
+      <VisuallyHidden>
+        <h2>Random Quotes about Programing</h2>
+      </VisuallyHidden>
       <QuoteWrapper key={data.author}>
         <Quote>{data.en}</Quote>
         <Author>{data.author}</Author>
@@ -63,7 +66,7 @@ const FadeIn = keyframes`
   }
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   display: flex;
 `;
 
