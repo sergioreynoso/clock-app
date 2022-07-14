@@ -11,7 +11,7 @@ const BackgroundImage = () => {
 
   return (
     <BgImageWrapper>
-      <BgImage
+      <Image
         src={resolvedTheme === "light" ? DayImage : NightImage}
         alt=""
         placeholder="blur"
@@ -31,9 +31,6 @@ const BgImageWrapper = styled.div`
   bottom: 0;
   background-color: hsl(${COLORS.black});
   z-index: -1;
-`;
-
-const BgImage = styled(Image)`
   opacity: 0.6;
 `;
 
