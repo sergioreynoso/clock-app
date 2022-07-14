@@ -120,7 +120,7 @@ const Button = styled.button`
   align-items: center;
   height: 40px;
   background-color: none;
-  transform: translate(22px, -2px);
+  transform: translateY(-2px);
 `;
 
 export default memo(Quotes);
