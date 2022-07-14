@@ -17,9 +17,12 @@ const Expand = () => {
 
   return (
     <Wrapper>
-      <VisuallyHidden>
-        <h2>Current time zone, day of the week, year and week number</h2>
-      </VisuallyHidden>
+      <h2>
+        <VisuallyHidden>
+          Current time zone, day of the week, year and week number
+        </VisuallyHidden>
+      </h2>
+
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
