@@ -3,6 +3,7 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Expand = () => {
   const { data, error } = useSWR(END_POINTS.timezone, fetcher, {
@@ -16,6 +17,9 @@ const Expand = () => {
 
   return (
     <Wrapper>
+      <VisuallyHidden>
+        <h2>Current time zone, day of the week, year and week number</h2>
+      </VisuallyHidden>
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
@@ -39,7 +43,7 @@ const Expand = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   height: 100%;
   color: hsl(var(--color-text));
   background-color: hsl(var(--color-bg) / 0.75);
