@@ -67,7 +67,7 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const QuoteWrapper = styled.div`
+const QuoteWrapper = styled.figure`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -84,7 +84,7 @@ const QuoteWrapper = styled.div`
   }
 `;
 
-const Quote = styled.span`
+const Quote = styled.blockquote`
   font-size: 0.75rem;
   line-height: 1.375rem;
   color: inherit;
@@ -95,7 +95,7 @@ const Quote = styled.span`
   }
 `;
 
-const Author = styled.span`
+const Author = styled.figcaption`
   font-size: 0.75rem;
   font-weight: 700;
   color: inherit;
