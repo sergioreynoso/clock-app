@@ -42,9 +42,10 @@ const Quotes = () => {
 
   return (
     <Wrapper>
-      <VisuallyHidden>
-        <h2>Random Quotes about Programing</h2>
-      </VisuallyHidden>
+      <h2>
+        <VisuallyHidden>Random Quotes about Programing</VisuallyHidden>
+      </h2>
+
       <QuoteWrapper key={data.author}>
         <Quote>{data.en}</Quote>
         <Author>{data.author}</Author>
