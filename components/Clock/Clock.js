@@ -7,6 +7,7 @@ import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
 import { getCurrentTime, isSunSet } from "../../utils/helpers";
 import useSWR from "swr";
+import VisuallyHidden from "../VisuallyHidden";
 
 const Clock = () => {
   const { theme, setTheme } = useTheme();
@@ -31,6 +32,9 @@ const Clock = () => {
 
   return (
     <Wrapper>
+      <VisuallyHidden>
+        <h2>Time Of Day And Location</h2>
+      </VisuallyHidden>
       <GreetingWrapper>
         <IconWrapper>
           {theme === "light" ? <SunIcon /> : <MoonIcon />}
@@ -46,7 +50,7 @@ const Clock = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   gap: 16px;
