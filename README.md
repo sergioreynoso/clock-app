@@ -36,7 +36,9 @@ Users should be able to:
 ## Screenshot
 
 ![Desktop](./public/images/desktop.png)
+<br>
 <img src="./public/images/tablet.png" width="768" alt="tablet image"/>
+<br>
 <img src="./public/images/mobile.png" width="375" alt="mobile image"/>
 
 <br>
@@ -59,12 +61,9 @@ Users should be able to:
 
 ## My process
 
-I built this app with Nextjs to take advantage of the built-in features, such as serverside rendering and the built-in Image component.
+I built this app with Nextjs for many of its build in features such as Next Image and static site generation SSG.
 
-I used Nextjs over CRA to experiment with its various rendering options. I tested server-side rendering(SSR) and static site generation (SSG). Ultimately, I decided to go with client-side rendering as SSR and SSG didn't offer any performance gains that would outweigh the extra code complexity.
-
-To load fetched data, I used Stale-While-Revalidate (SWR) library. I simplified the data fetching logic with just one line of code and easily handled errors and preloading. Given Reacts 18 upcoming new updates like the updated <suspense> feature, I plan to reformat the code to further simplify the code base by moving preloading to the parent of the components fetching data.
-
+To load fetched data, I used Stale-While-Revalidate (SWR) library to simplify data fetching logic with just one line of code and easily handled errors and preloading.
 <br>
 
 ```js
