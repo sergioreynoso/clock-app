@@ -1,22 +1,9 @@
-import dynamic from "next/dynamic";
-import Head from "next/head";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/700.css";
-
-const DynamicComponentWithNoSSR = dynamic(
-  () => import("../components/ClockApp/ClockApp"),
-  { ssr: false }
-);
+import ClockApp from "../components/ClockApp/ClockApp";
 
 const Home = () => {
-  return (
-    <>
-      <Head>
-        <title>Frontend Mentor - Clock App</title>
-      </Head>
-      <DynamicComponentWithNoSSR />
-    </>
-  );
+  return <ClockApp />;
 };
 
 export default Home;

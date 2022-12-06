@@ -9,7 +9,8 @@ export default class MyDocument extends Document {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
@@ -30,6 +31,7 @@ export default class MyDocument extends Document {
             type="image/x-icon"
             href="/images/favicon-32x32.png"
           />
+          <title>Frontend Mentor - Clock App</title>
         </Head>
         <body>
           <Main />
