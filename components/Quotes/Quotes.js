@@ -1,7 +1,7 @@
+import Image from "next/image";
 import React, { memo } from "react";
 import styled, { keyframes } from "styled-components";
 import useSWR, { useSWRConfig } from "swr";
-import Icon from "../../public/images/icon-refresh.svg";
 import {
   ANIMATION_TIME,
   COLORS,
@@ -11,6 +11,7 @@ import {
 } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
 import VisuallyHidden from "../VisuallyHidden";
+import RefreshIcon from "../../public/images/icon-refresh.svg";
 
 const Quotes = () => {
   const { mutate } = useSWRConfig();
@@ -52,7 +53,7 @@ const Quotes = () => {
       </QuoteWrapper>
       <Button onClick={onClickHandler}>
         <VisuallyHidden>Refresh quote</VisuallyHidden>
-        <RefreshIcon />
+        <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
       </Button>
     </Wrapper>
   );
@@ -108,20 +109,20 @@ const Author = styled.figcaption`
   }
 `;
 
-const RefreshIcon = styled(Icon)`
-  width: 18px;
-  height: 18px;
-  fill: hsl(${COLORS.white});
-`;
-
 const Button = styled.button`
   flex: 0 0 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
-  background-color: none;
+  color: black;
+  background-color: transparent;
   transform: translateY(-2px);
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 export default memo(Quotes);
