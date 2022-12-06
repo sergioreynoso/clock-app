@@ -1,13 +1,12 @@
-import React, { useState, useEffect, memo } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
-import SunIcon from "../../public/images/icon-sun.svg";
-import MoonIcon from "../../public/images/icon-moon.svg";
 import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
-import { fetcher, getTimeOfDayGreeting } from "../../utils/helpers";
+import { fetcher } from "../../utils/helpers";
 import { getCurrentTime, isSunSet } from "../../utils/helpers";
 import useSWR from "swr";
 import VisuallyHidden from "../VisuallyHidden";
+import ClockGreeting from "../ClockGreeting/ClockGreeting";
 
 const Clock = () => {
   const { theme, setTheme } = useTheme();
@@ -35,12 +34,7 @@ const Clock = () => {
       <h2>
         <VisuallyHidden>Time Of Day And Location</VisuallyHidden>
       </h2>
-      <GreetingWrapper>
-        <IconWrapper>
-          {theme === "light" ? <SunIcon /> : <MoonIcon />}
-        </IconWrapper>
-        <Greeting>{`Good ${getTimeOfDayGreeting()}, It's currently`}</Greeting>
-      </GreetingWrapper>
+      <ClockGreeting theme={theme} />
       <TimeWrapper>
         <Time>{time}</Time>
         <TimeZone>{data?.timezone.abbr}</TimeZone>
@@ -60,32 +54,6 @@ const Wrapper = styled.article`
   }
   @media ${QUERIES.laptopAndUp} {
     gap: 16px;
-  }
-`;
-
-const IconWrapper = styled.div`
-  flex-shrink: 0;
-`;
-
-const GreetingWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-`;
-
-const Greeting = styled.span`
-  font-size: 0.9375rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1875rem;
-  color: hsl(${COLORS.white});
-
-  @media ${QUERIES.tabletAndUp} {
-    font-size: 1.125rem;
-    letter-spacing: 0.225rem;
-  }
-
-  @media ${QUERIES.laptopAndUp} {
-    font-size: 1.25rem;
-    letter-spacing: 0.25rem;
   }
 `;
 
@@ -140,4 +108,4 @@ const Location = styled.span`
   }
 `;
 
-export default memo(Clock);
+export default Clock;
