@@ -7,6 +7,11 @@ const Home = () => {
   return (
     <>
       <Head>
+        <link
+          rel="shortcut icon"
+          type="image/x-icon"
+          href="/images/favicon-32x32.png"
+        />
         <title>Frontend Mentor - Clock App</title>
       </Head>
       <ClockApp />;
