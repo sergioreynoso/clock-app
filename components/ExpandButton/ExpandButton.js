@@ -4,10 +4,16 @@ import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
 
 export default function ExpandButton({ isToggled, onClick }) {
+  const iconAltMessage = isToggled ? "up" : "down";
+
   return (
     <Button onClick={onClick}>
       <Label>{isToggled ? "Less" : "More"}</Label>
-      <Icon src={IconArrowUp} $isToggled={isToggled} />
+      <Icon
+        src={IconArrowUp}
+        $isToggled={isToggled}
+        alt={`Chevron icon pointing ${iconAltMessage}`}
+      />
     </Button>
   );
 }
