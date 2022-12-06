@@ -39,4 +39,4 @@ const BgImageWrapper = styled.div`
   opacity: 0.6;
 `;
 
-export default BackgroundImage;
+export default React.memo(BackgroundImage);

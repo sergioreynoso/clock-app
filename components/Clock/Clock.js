@@ -108,4 +108,4 @@ const Location = styled.span`
   }
 `;
 
-export default Clock;
+export default React.memo(Clock);
