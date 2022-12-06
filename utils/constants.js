@@ -54,7 +54,7 @@ export const ANIMATION_TIME = {
 export const END_POINTS = {
   location: "https://ipwho.is/",
   timezone: "https://worldtimeapi.org/api/ip",
-  quotes: "https://programming-quotes-api.herokuapp.com/Quotes/random",
+  quotes: "https://api.quotable.io/random",
 };
 
 export const FADE_IN = keyframes`
