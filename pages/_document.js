@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
@@ -21,23 +21,5 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
-  }
-  render() {
-    return (
-      <Html lang="en">
-        <Head>
-          <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="/images/favicon-32x32.png"
-          />
-          <title>Frontend Mentor - Clock App</title>
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    );
   }
 }
