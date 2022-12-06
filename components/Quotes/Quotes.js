@@ -32,7 +32,7 @@ const Quotes = () => {
     );
   }
 
-  if (!data) {
+  if (!data && !error) {
     return (
       <QuoteWrapper>
         <Author>Loading...</Author>
@@ -43,11 +43,11 @@ const Quotes = () => {
   return (
     <Wrapper>
       <h2>
-        <VisuallyHidden>Random Quotes about Programing</VisuallyHidden>
+        <VisuallyHidden>Random Quote Generator</VisuallyHidden>
       </h2>
 
-      <QuoteWrapper key={data.author}>
-        <Quote>{data.en}</Quote>
+      <QuoteWrapper key={data._id}>
+        <Quote>{data.content}</Quote>
         <Author>{data.author}</Author>
       </QuoteWrapper>
       <Button onClick={onClickHandler}>
