@@ -36,8 +36,8 @@ Users should be able to:
 ## Screenshot
 
 ![Desktop](./public/images/desktop.png)
-<img src="./public/images/tablet.png" width="768" />
-<img src="./public/images/mobile.png" width="375" />
+<img src="./public/images/tablet.png" width="768" alt="tablet image"/>
+<img src="./public/images/mobile.png" width="375" alt="mobile image"/>
 
 <br>
 
@@ -100,7 +100,7 @@ The app has two themes, one for the day and one for the night. The correct theme
 <br>
 
 ```js
-export const isSunSet = data => {
+export const isSunSet = (data) => {
   if (!data) return;
   const hour = new Date().getHours();
   const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
