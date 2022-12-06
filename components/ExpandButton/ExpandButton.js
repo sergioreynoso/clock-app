@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Image from "next/image";
 import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
 
@@ -6,9 +7,7 @@ export default function ExpandButton({ isToggled, onClick }) {
   return (
     <Button onClick={onClick}>
       <Label>{isToggled ? "Less" : "More"}</Label>
-      {/* The '$' sign on the prop name makes it a transient prop. 
-      It wont get passed down to the child component */}
-      <Icon $isToggled={isToggled} />
+      <Icon src={IconArrowUp} $isToggled={isToggled} />
     </Button>
   );
 }
@@ -45,7 +44,7 @@ const Label = styled.span`
   }
 `;
 
-const Icon = styled(IconArrowUp)`
+const Icon = styled(Image)`
   width: 32px;
   height: 32px;
   transform: rotate(${({ $isToggled }) => ($isToggled ? "0deg" : "180deg")});
