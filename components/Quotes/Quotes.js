@@ -49,12 +49,12 @@ const Quotes = () => {
 
       <QuoteWrapper key={data._id}>
         <Quote>{data.content}</Quote>
+        <Button onClick={onClickHandler}>
+          <VisuallyHidden>Refresh quote</VisuallyHidden>
+          <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
+        </Button>
         <Author>{data.author}</Author>
       </QuoteWrapper>
-      <Button onClick={onClickHandler}>
-        <VisuallyHidden>Refresh quote</VisuallyHidden>
-        <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
-      </Button>
     </Wrapper>
   );
 };
@@ -74,8 +74,8 @@ const Wrapper = styled.article`
 
 const QuoteWrapper = styled.figure`
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(324px, 573px) 40px;
   color: hsl(${COLORS.white});
   gap: 8px;
 
@@ -101,6 +101,7 @@ const Quote = styled.blockquote`
 `;
 
 const Author = styled.figcaption`
+  align-content: start;
   font-size: 0.75rem;
   font-weight: 700;
   color: inherit;
@@ -110,14 +111,15 @@ const Author = styled.figcaption`
 `;
 
 const Button = styled.button`
-  flex: 0 0 40px;
+  justify-self: start;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 40px;
   color: black;
+
   background-color: transparent;
-  transform: translateY(-2px);
+  transform: translateY(-5px);
   opacity: 0.5;
 
   &:hover {
