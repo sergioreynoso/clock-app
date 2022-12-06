@@ -1,21 +1,28 @@
-import React, { memo } from "react";
+import React from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import { COLORS } from "../../utils/constants";
 import DayImage from "../../public/images/background_day.jpg";
 import NightImage from "../../public/images/background_night.jpg";
 
+const ComponentWithNoSSR = dynamic(() => import("next/image"), {
+  ssr: false,
+});
+
 const BackgroundImage = () => {
   const { resolvedTheme } = useTheme();
+  const imageUrl = resolvedTheme === "light" ? DayImage : NightImage;
 
   return (
     <BgImageWrapper>
-      <Image
-        src={resolvedTheme === "light" ? DayImage : NightImage}
-        alt=""
+      <ComponentWithNoSSR
+        src={imageUrl}
+        alt="Background Image"
         placeholder="blur"
-        layout="raw"
+        fill={true}
+        style={{ objectFit: "cover" }}
       />
     </BgImageWrapper>
   );
@@ -30,12 +37,6 @@ const BgImageWrapper = styled.div`
   background-color: hsl(${COLORS.black});
   z-index: -1;
   opacity: 0.6;
-
-  & > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `;
 
-export default memo(BackgroundImage);
+export default BackgroundImage;
