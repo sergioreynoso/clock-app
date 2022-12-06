@@ -14,7 +14,7 @@ const Home = () => {
         />
         <title>Frontend Mentor - Clock App</title>
       </Head>
-      <ClockApp />;
+      <ClockApp />
     </>
   );
 };
