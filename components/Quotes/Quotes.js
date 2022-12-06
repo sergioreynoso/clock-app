@@ -122,8 +122,14 @@ const Button = styled.button`
   transform: translateY(-5px);
   opacity: 0.5;
 
-  &:hover {
+  &:active {
     opacity: 1;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
