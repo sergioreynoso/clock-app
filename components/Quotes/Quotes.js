@@ -119,11 +119,15 @@ const Button = styled.button`
   color: black;
 
   background-color: transparent;
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   opacity: 0.5;
 
   &:active {
     opacity: 1;
+  }
+
+  @media ${QUERIES.tabletAndUp} {
+    transform: translateY(-5px);
   }
 
   @media (hover: hover) {
