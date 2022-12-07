@@ -43,50 +43,26 @@ const Quotes = () => {
 
   return (
     <Wrapper>
-      <h2>
-        <VisuallyHidden>Random Quote Generator</VisuallyHidden>
-      </h2>
-
-      <QuoteWrapper key={data._id}>
+      <QuoteWrapper>
         <Quote>{data.content}</Quote>
-        <Button onClick={onClickHandler}>
-          <VisuallyHidden>Refresh quote</VisuallyHidden>
-          <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
-        </Button>
         <Author>{data.author}</Author>
       </QuoteWrapper>
+      <Button onClick={onClickHandler}>
+        <VisuallyHidden>Refresh quote</VisuallyHidden>
+        <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
+      </Button>
     </Wrapper>
   );
 };
 
-const FadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-const Wrapper = styled.article`
+const Wrapper = styled.figure`
   display: flex;
-`;
-
-const QuoteWrapper = styled.figure`
-  flex: 1;
-  display: grid;
-  grid-template-columns: minmax(324px, 573px) 40px;
-  color: hsl(${COLORS.white});
   gap: 8px;
-
+  color: hsl(${COLORS.white});
   will-change: transform;
   animation: ${FADE_IN} ${ANIMATION_TIME.slow};
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
-
-  @media ${QUERIES.tabletAndUp} {
-    gap: 13px;
-  }
 `;
 
 const Quote = styled.blockquote`
@@ -101,7 +77,6 @@ const Quote = styled.blockquote`
 `;
 
 const Author = styled.figcaption`
-  align-content: start;
   font-size: 0.75rem;
   font-weight: 700;
   color: inherit;
@@ -110,11 +85,18 @@ const Author = styled.figcaption`
   }
 `;
 
+const QuoteWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 573px;
+`;
+
 const Button = styled.button`
-  justify-self: start;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 40px;
   height: 40px;
   color: black;
 
