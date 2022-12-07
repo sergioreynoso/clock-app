@@ -1,6 +1,6 @@
 import SunCalc from "suncalc";
 
-export const fetcher = (...args) => fetch(...args).then(res => res.json());
+export const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 export const getCurrentTime = () => {
   const date = new Date();
@@ -19,10 +19,12 @@ export const getTimeOfDayGreeting = () => {
   return "day";
 };
 
-export const isSunSet = data => {
-  if (!data) return;
+export const isSunSet = (latitude, longitude) => {
+  if (!latitude && !longitude) {
+    throw Error("Must provide latitude and longitude");
+  }
   const hour = new Date().getHours();
-  const times = SunCalc.getTimes(new Date(), data.latitude, data.longitude);
+  const times = SunCalc.getTimes(new Date(), latitude, longitude);
   const sunrise = times.sunrise.getHours();
   const sunset = times.sunset.getHours();
   return hour >= sunrise && hour < sunset ? false : true;
