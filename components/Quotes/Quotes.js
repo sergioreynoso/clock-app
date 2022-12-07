@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { memo } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import {
   ANIMATION_TIME,
   COLORS,
@@ -37,13 +37,19 @@ const Quotes = () => {
 
   return (
     <Wrapper>
-      <QuoteWrapper>
+      <QuoteWrapper role="alert">
         <Quote>{data.content}</Quote>
         <Author>{data.author}</Author>
       </QuoteWrapper>
       <Button onClick={onClickHandler}>
         <VisuallyHidden>Refresh quote</VisuallyHidden>
-        <Image src={RefreshIcon} alt="Refresh Icon" width={18} height={18} />
+        <Image
+          src={RefreshIcon}
+          alt="Refresh Icon"
+          width={18}
+          height={18}
+          aria-hidden="true"
+        />
       </Button>
     </Wrapper>
   );
