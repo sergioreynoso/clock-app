@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { memo } from "react";
 import styled, { keyframes } from "styled-components";
-import useSWR, { useSWRConfig } from "swr";
 import {
   ANIMATION_TIME,
   COLORS,
@@ -9,17 +8,12 @@ import {
   FADE_IN,
   QUERIES,
 } from "../../utils/constants";
-import { fetcher } from "../../utils/helpers";
 import VisuallyHidden from "../VisuallyHidden";
 import RefreshIcon from "../../public/images/icon-refresh.svg";
+import useFetchData from "../../hooks/useFetchData";
 
 const Quotes = () => {
-  const { mutate } = useSWRConfig();
-  const { data, error } = useSWR(END_POINTS.quotes, fetcher, {
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    refreshInterval: 0,
-  });
+  const { data, error, mutate } = useFetchData(END_POINTS.quotes);
 
   const onClickHandler = () => {
     mutate(END_POINTS.quotes);

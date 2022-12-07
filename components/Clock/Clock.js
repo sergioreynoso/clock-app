@@ -2,31 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
-import { fetcher } from "../../utils/helpers";
 import { isSunSet } from "../../utils/helpers";
-import useSWR from "swr";
 import VisuallyHidden from "../VisuallyHidden";
 import ClockGreeting from "../ClockGreeting/ClockGreeting";
 import TimeCounter from "../TimeCounter/TimeCounter";
+import useFetchData from "../../hooks/useFetchData";
 
 const Clock = () => {
   const { theme, setTheme } = useTheme();
-  const { data, error } = useSWR(END_POINTS.location, fetcher, {
-    revalidateIfStale: false,
-    revalidateOnFocus: false,
-    refreshInterval: 0,
-  });
+  const { data, error } = useFetchData(END_POINTS.location);
 
   if (error) return <Wrapper>Error loading data</Wrapper>;
   if (!data && !error) return <Wrapper>Loading....</Wrapper>;
 
-  isSunSet(data) ? setTheme("dark") : setTheme("light");
+  isSunSet(data.latitude, data.longitude)
+    ? setTheme("dark")
+    : setTheme("light");
 
   return (
     <Wrapper>
-      <h2>
-        <VisuallyHidden>Time Of Day And Location</VisuallyHidden>
-      </h2>
+      <VisuallyHidden>Time Of Day And Location</VisuallyHidden>
       <ClockGreeting theme={theme} />
       <TimeWrapper>
         <TimeCounter />
