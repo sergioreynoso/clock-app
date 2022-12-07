@@ -1,24 +1,23 @@
 import styled from "styled-components";
 import Image from "next/image";
+import * as Toggle from "@radix-ui/react-toggle";
 import { ANIMATION_TIME, COLORS, QUERIES } from "../../utils/constants";
 import IconArrowUp from "../../public/images/icon-arrow-up.svg";
 
 export default function ExpandButton({ isToggled, onClick }) {
-  const iconAltMessage = isToggled ? "up" : "down";
-
   return (
-    <Button onClick={onClick}>
-      <Label>{isToggled ? "Less" : "More"}</Label>
-      <Icon
-        src={IconArrowUp}
-        $isToggled={isToggled}
-        alt={`Chevron icon pointing ${iconAltMessage}`}
-      />
+    <Button
+      onClick={onClick}
+      aria-label={`Toggle ${isToggled ? "less" : "more"}`}
+      aria-expanded={isToggled}
+      aria-controls="location_details">
+      <Label aria-hidden="true">{isToggled ? "Less" : "More"}</Label>
+      <Icon src={IconArrowUp} $isToggled={isToggled} aria-hidden="true" />
     </Button>
   );
 }
 
-const Button = styled.button`
+const Button = styled(Toggle.Root)`
   display: flex;
   justify-content: space-between;
   align-items: center;

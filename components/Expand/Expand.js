@@ -13,16 +13,10 @@ const Expand = () => {
   });
 
   if (error) return <Wrapper>Error loading data</Wrapper>;
-  if (!data) return <Wrapper>Loading....</Wrapper>;
+  if (!data && !error) return <Wrapper>Loading....</Wrapper>;
 
   return (
-    <Wrapper>
-      <h2>
-        <VisuallyHidden>
-          Current time zone, day of the week, year and week number
-        </VisuallyHidden>
-      </h2>
-
+    <Wrapper id="location_details" role="region">
       <ListWrapper>
         <ListItem1>
           <Heading>Current Timezone</Heading>
