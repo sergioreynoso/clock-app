@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useTheme } from "next-themes";
 import { COLORS, END_POINTS, QUERIES } from "../../utils/constants";
 import { fetcher } from "../../utils/helpers";
-import { getCurrentTime, isSunSet } from "../../utils/helpers";
+import { isSunSet } from "../../utils/helpers";
 import useSWR from "swr";
 import VisuallyHidden from "../VisuallyHidden";
 import ClockGreeting from "../ClockGreeting/ClockGreeting";
+import TimeCounter from "../TimeCounter/TimeCounter";
 
 const Clock = () => {
   const { theme, setTheme } = useTheme();
-  const [time, setTime] = useState(getCurrentTime());
   const { data, error } = useSWR(END_POINTS.location, fetcher, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     refreshInterval: 0,
   });
 
-  useEffect(() => {
-    const timeInt = setInterval(() => {
-      setTime(getCurrentTime());
-    }, 10000);
-    return () => clearInterval(timeInt);
-  }, [data]);
-
   if (error) return <Wrapper>Error loading data</Wrapper>;
-  if (!data) return <Wrapper>Loading....</Wrapper>;
+  if (!data && !error) return <Wrapper>Loading....</Wrapper>;
 
   isSunSet(data) ? setTheme("dark") : setTheme("light");
 
@@ -36,10 +29,10 @@ const Clock = () => {
       </h2>
       <ClockGreeting theme={theme} />
       <TimeWrapper>
-        <Time>{time}</Time>
-        <TimeZone>{data?.timezone.abbr}</TimeZone>
+        <TimeCounter />
+        <TimeZone>{data.timezone.abbr}</TimeZone>
       </TimeWrapper>
-      <Location>{`${data?.region}, ${data?.region_code}`}</Location>
+      <Location>{`${data.region}, ${data.region_code}`}</Location>
     </Wrapper>
   );
 };
@@ -62,21 +55,6 @@ const TimeWrapper = styled.div`
   justify-content: flex-start;
   align-items: baseline;
   gap: 16px;
-`;
-
-const Time = styled.h1`
-  font-size: 6.25rem;
-  font-weight: 700;
-  line-height: 1;
-  color: hsl(${COLORS.white});
-  @media ${QUERIES.tabletAndUp} {
-    font-size: 10.9375rem;
-    letter-spacing: -0.2737rem;
-  }
-  @media ${QUERIES.laptopAndUp} {
-    font-size: 12.5rem;
-    letter-spacing: -0.3125rem;
-  }
 `;
 
 const TimeZone = styled.span`
